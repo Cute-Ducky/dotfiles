@@ -8,8 +8,8 @@
 {
 imports =
 [ # Include the results of the hardware scan.
-./hardware-configuration.nix
-./boot.nix
+#./hardware-configuration.nix
+#./boot.nix
 ];
 
 # make ready for flakes

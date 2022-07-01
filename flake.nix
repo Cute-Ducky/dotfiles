@@ -26,7 +26,7 @@
 	nixos = lib.nixosSystem {
 	   inherit system;
 	   modules = [
-	   	./system/configuration.nix
+	   	./system/system.nix
 	   ];
 
 	};
