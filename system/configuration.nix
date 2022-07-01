@@ -9,15 +9,22 @@
 imports =
 [ # Include the results of the hardware scan.
 ./hardware-configuration.nix
-<nixpkgs/nixos/modules/profiles/hardened.nix>
-#./mac.nix
-#./home-manager.nix
 ];
 
+# make ready for flakes
+  nix = {
+    package = pkgs.nixFlakes; 
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+   };
+
+
+
  nixpkgs.overlays = [
-      (final: prev: {
-            dwm = prev.dwm.overrideAttrs (old: { src = /etc/nixos/src/dwm ;});
-            slock = prev.slock.overrideAttrs (old: {src = /etc/nixos/src/slock ;});
+     (final: prev: {
+            dwm = prev.dwm.overrideAttrs (old: { src = ./src/dwm ;});
+            slock = prev.slock.overrideAttrs (old: {src = ./src/slock ;});
           })
       ];
 
@@ -239,13 +246,13 @@ programs = {
 	#};
    };
    # enable firejail
-   firejail.enable = true;
-   firejail.wrappedBinaries = {
-   firefox = {
-       executable = "${pkgs.lib.getBin pkgs.firefox}/bin/firefox";
-       profile = "${pkgs.firejail}/etc/firejail/firefox.profile";
-   };
-   };
+   #firejail.enable = true;
+   #firejail.wrappedBinaries = {
+   #firefox = {
+   #    executable = "${pkgs.lib.getBin pkgs.firefox}/bin/firefox";
+   #    profile = "${pkgs.firejail}/etc/firejail/firefox.profile";
+   #};
+   #};
 };
 # enable antivirus clamav and
 # keep the signatures' database updated
