@@ -31,6 +31,19 @@
 
 	};
     };
+    homeManagerConfigurations = {
+    glenda = home-manager.lib.homeManagerConfiguration  {
+    inherit system pkgs;
+    username = "glenda";
+    homeDirectory = "/home/glenda";
+    stateVersion = "22.05";
+    configuration = {
+    imports = [
+    ./users/glenda/home.nix
+    ];
+    };
+    };
+    };
 
   };
 
