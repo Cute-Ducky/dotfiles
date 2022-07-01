@@ -21,7 +21,7 @@
      };
 
      lib = nixpkgs.lib;
-  in {
+    in {
     nixosConfigurations = {
 	nixos = lib.nixosSystem {
 	   inherit system;
@@ -45,7 +45,9 @@
     };
     };
 
+
   };
+
 
    
 
