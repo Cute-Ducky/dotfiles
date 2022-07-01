@@ -6,5 +6,6 @@ imports =
 ./hardware-configuration.nix
 ./boot.nix
 ./configuration.nix
+./networking.nix
 ];
 }

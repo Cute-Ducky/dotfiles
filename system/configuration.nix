@@ -68,14 +68,6 @@ system.autoUpgrade.enable = true;
 system.autoUpgrade.allowReboot = true;
 system.autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable/";
 
-networking.hostName = "nixos"; # Define your hostname.
-# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-networking.networkmanager.enable = true;  
-networking.extraHosts = ''
-192.168.178.169 pi.home.local
-'';
-
 # Set your time zone.
 time.timeZone = "Europe/Berlin";
 # docker
@@ -84,7 +76,7 @@ virtualisation.docker.enable = true;
 # The global useDHCP flag is deprecated, therefore explicitly set to false here.
 # Per-interface useDHCP will be mandatory in the future, so this generated config
 # replicates the default behaviour.
-networking.useDHCP = false;
+#networking.useDHCP = false;
 
 # Configure network proxy if necessary
 # networking.proxy.default = "http://user:password@proxy:port/";
