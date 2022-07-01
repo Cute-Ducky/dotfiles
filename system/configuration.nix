@@ -159,6 +159,7 @@ librewolf
 nerdfonts
 #busybox
 coreutils
+shadow
 bc
 picom
 dialog
