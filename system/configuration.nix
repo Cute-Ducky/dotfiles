@@ -157,7 +157,8 @@ docker docker-compose
 #nur.repos.wolfangaukang.librewolf-bin
 librewolf
 nerdfonts
-busybox
+#busybox
+coreutils
 bc
 picom
 dialog
