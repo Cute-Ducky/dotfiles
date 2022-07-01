@@ -9,6 +9,7 @@
 imports =
 [ # Include the results of the hardware scan.
 ./hardware-configuration.nix
+./boot.nix
 ];
 
 # make ready for flakes
@@ -38,33 +39,7 @@ hardware.bluetooth.enable = false;
 # boot.loader.systemd-boot.enable = true;
 # boot.loader.efi.canTouchEfiVariables = true;
 # 03e1097b-e112-49cf-9cd3-e39e832e29fa
-boot = {
-   #kernelPackages = pkgs.linuxPackages_latest_hardened;
-   loader = {
-	efi = {
-	   #canTouchEfiVariables = true;
-	   efiSysMountPoint = "/boot";
-	};
-   	grub = {
-	   enable = true;
-	   devices = [ "nodev" ];
-	   efiInstallAsRemovable = true;
-	   efiSupport = true;
-	   useOSProber = true;
-	   extraConfig = ''
-	   serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1
-	   terminal_input --append serial
-	   terminal_output --append serial
-	   '';
-	   #theme = pkgs.nixos-grub2-theme;
-	};
-   };
-   supportedFilesystems = [ "zfs" ]; #  add bcachefs here
-   zfs.requestEncryptionCredentials = true;
-   #plymouth = {
-	#enable = true;
-   #};
-};
+
 
 # disable coredump that could be exploited later
 # and also slow down the system when something crash
