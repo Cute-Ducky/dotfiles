@@ -22,14 +22,6 @@ imports =
 
 
 
- nixpkgs.overlays = [
-     (final: prev: {
-            dwm = prev.dwm.overrideAttrs (old: { src = ./src/dwm ;});
-            #slock = prev.slock.overrideAttrs (old: {src = ./src/slock ;});
-          })
-      ];
-
-
 hardware.enableAllFirmware = true;
 nixpkgs.config.allowUnfree = true;
 
