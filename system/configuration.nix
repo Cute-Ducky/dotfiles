@@ -9,6 +9,7 @@
 imports =
 [ # Include the results of the hardware scan.
 ./hardware-configuration.nix
+<nixpkgs/nixos/modules/profiles/hardened.nix>
 #./mac.nix
 #./home-manager.nix
 ];
@@ -57,6 +58,10 @@ boot = {
 	#enable = true;
    #};
 };
+
+# disable coredump that could be exploited later
+# and also slow down the system when something crash
+systemd.coredump.enable = false;
 
 services.zfs = {
 autoScrub.enable = true;
@@ -199,7 +204,7 @@ xorg.libXinerama
 # systemd.user.services.jellyfin.enable = false;
 # virt-manager
 virtualisation.libvirtd.enable = true;
-programs.dconf.enable = true;
+
 # started in user sessions.
 # programs.mtr.enable = true;
 # programs.gnupg.agent = {
@@ -218,6 +223,7 @@ networking.firewall.allowedTCPPorts = [ 22  8096 ];
 # Or disable the firewall altogether.
 # networking.firewall.enable = false;
 programs = {
+   dconf.enable = true;
    zsh = {
   	enable = true;
 	syntaxHighlighting = {
@@ -232,23 +238,19 @@ programs = {
 	#   plugins = [ "zsh-interactive-cd" ];
 	#};
    };
-   neovim = {
-   	enable = true;
-	defaultEditor = true;
-	vimAlias = true;
-	configure = {
-     customRC = ''
-	   set tabstop=4
-  	   '';
-	   packages.myVimPackage = with pkgs.vimPlugins; {
-           # loaded on launch
-           start = [ fugitive ];
-           # manually loadable by calling `:packadd $plugin-name`
-           opt = [ ];
-  };
-	};
+   # enable firejail
+   firejail.enable = true;
+   firejail.wrappedBinaries = {
+   firefox = {
+       executable = "${pkgs.lib.getBin pkgs.firefox}/bin/firefox";
+       profile = "${pkgs.firejail}/etc/firejail/firefox.profile";
+   };
    };
 };
+# enable antivirus clamav and
+# keep the signatures' database updated
+services.clamav.daemon.enable = true;
+services.clamav.updater.enable = true;
 # Xorg
 services.xserver = {
 enable = true;
