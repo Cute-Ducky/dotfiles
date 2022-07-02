@@ -20,4 +20,4 @@ jobs:
             experimental-features = nix-command flakes
           nix_path: "nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz"
       - name: Flake
-        run: su glenda -c 'nix flake check'
+        run: nix flake check
