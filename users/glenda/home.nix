@@ -29,7 +29,7 @@ imports = [
   package = pkgs.gitAndTools.gitFull;
   enable = true;
   userName = "9glenda";
-  userEmail = "luis.braun07@gmail.com";
+  userEmail = "9glenda@nixmail.com";
   #init = { defaultBranch = "main"; } ;  
   };
    home.file = {

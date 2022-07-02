@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+  apply:
+    cmds:
+      - task: apply-system
+      - task: apply-users
+
+
+  apply-system:
+    cmds:
+      - doas nixos-rebuild --flake .#nixos switch
+
+  apply-users:
+    cmds:
+      - nix build .#homeManagerConfigurations.glenda.activationPackage
+      - ./result/activate
+
+  update-system:
+    cmds:
+      - nix flake update
+
