@@ -40,7 +40,7 @@ home.file = {
 
 (custom-set-variables
    '(rational-ui-default-font
-     '(:font "JetBrains Mono" :weight light :height 185)))
+     '(:font "JetBrains Mono" :weight light :height 200)))
 (use-package which-key
   :defer 0
   :diminish which-key-mode
