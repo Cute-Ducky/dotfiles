@@ -2,11 +2,7 @@
 
 {
 imports = [
-#./nvchad.nix
-#./distrotube/alacritty.nix
-#./distrotube/dtos.nix
-#./bspwm.nix
-#./berry.nix
+./emacs.nix
 ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
