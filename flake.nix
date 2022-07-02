@@ -30,7 +30,8 @@
 	   ];
 
 	};
-    };
+
+};
     homeManagerConfigurations = {
     glenda = home-manager.lib.homeManagerConfiguration  {
     inherit system pkgs;
@@ -52,12 +53,5 @@
         ];
     };
 
-
-
-
   };
-
-
-   
-
 }

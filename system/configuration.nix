@@ -124,6 +124,7 @@ vim neovim helix
 neofetch pfetch
 wget
 firefox
+musl
 fluffychat element-desktop
 thunderbird mailspring
 rpi-imager
