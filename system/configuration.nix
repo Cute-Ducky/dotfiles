@@ -120,11 +120,11 @@ environment = {
 systemPackages = with pkgs; [
 eww
 doas
-vim neovim helix
+vim neovim helix 
+vscode
 neofetch pfetch
 wget
-firefox
-musl
+firefox librewolf
 fluffychat element-desktop
 thunderbird mailspring
 rpi-imager
@@ -132,31 +132,29 @@ xautolock
 xlockmore
 qbittorrent
 qemu_full
-go zig tinycc
 openssl
-php
+#php
 espeak
-cargo
-rustup
-rustc
-vscode
+# Programming languages
+cargo rustup rustc
+go
+gcc tinycc clang
 bash zsh fish mksh
 bitwarden bitwarden-cli
 ansible
 jellyfin
 brightnessctl slock
 dwm dmenu alacritty st
-fish
 telegram-cli mattermost-desktop session-desktop-appimage tdesktop qtox
 drawterm plan9port
-virt-manager #quickemu
+virt-manager quickemu
 minecraft lunar-client
 git
 feh
 bitwarden
 docker docker-compose
 #nur.repos.wolfangaukang.librewolf-bin
-librewolf
+
 nerdfonts
 #busybox
 coreutils
