@@ -32,6 +32,9 @@ home.file = {
 ;; Further settings and customizations follow here...
 (rational-package-install-package 'nix-mode)
 
+(rational-package-install-package 'yaml-mode)
+
+
 (rational-package-install-package 'doom-themes)
 (load-theme 'doom-one t)
 
