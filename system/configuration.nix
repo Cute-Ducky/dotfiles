@@ -126,6 +126,7 @@ vscode
 neofetch pfetch
 wget
 firefox librewolf
+act
 emacs
 fluffychat element-desktop
 thunderbird mailspring
