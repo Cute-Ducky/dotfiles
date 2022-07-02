@@ -38,6 +38,16 @@ home.file = {
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 
+(custom-set-variables
+   '(rational-ui-default-font
+     '(:font "JetBrains Mono" :weight light :height 185)))
+(use-package which-key
+  :defer 0
+  :diminish which-key-mode
+  :config
+  (which-key-mode)
+  (setq which-key-idle-delay 1))
+
 '';
   recursive = true;
   };
