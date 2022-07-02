@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
 home.file = {
-  ".config/emacs" = { 
+  ".config/emacs" = {
   source = pkgs.fetchFromGitHub {
      owner = "plexus";
      repo = "chemacs2";
@@ -14,14 +14,14 @@ home.file = {
 (("default" . ((user-emacs-directory . "~/.config/rational-emacs"))))
   '';
 
-  ".config/rational-emacs/rational-emacs/config.el" = { 
+  ".config/rational-emacs/rational-emacs/config.el" = {
   text = ''
 (require 'rational-defaults)    ; Sensible default settings for Emacs
 (require 'rational-use-package) ; Configuration for `use-package`
-(require 'rational-updates)     ; Tools to upgrade Rational Emacs
+;(require 'rational-updates)     ; Tools to upgrade Rational Emacs
 (require 'rational-completion)  ; selection framework based on `vertico`
 (require 'rational-ui)          ; Better UI experience (modeline etc.)
-(require 'rational-windows)     ; Window management configuration
+;(require 'rational-windows)     ; Window management configuration
 (require 'rational-editing)     ; Whitspace trimming, auto parens etc.
 (require 'rational-evil)        ; An `evil-mode` configuration
 (require 'rational-org)         ; org-appear, clickable hyperlinks etc.
@@ -31,6 +31,9 @@ home.file = {
 
 ;; Further settings and customizations follow here...
 (rational-package-install-package 'nix-mode)
+
+(rational-package-install-package 'doom-themes)
+(load-theme 'doom-one t)
 
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files

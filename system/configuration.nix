@@ -4,7 +4,7 @@
 
 
 { config, pkgs, ... }:
- 
+
 {
 imports =
 [ # Include the results of the hardware scan.
@@ -14,7 +14,7 @@ imports =
 
 # make ready for flakes
   nix = {
-    package = pkgs.nixFlakes; 
+    package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -40,11 +40,11 @@ systemd.coredump.enable = false;
 services.zfs = {
 autoScrub.enable = true;
 autoSnapshot = {
-	enable = true;
-	flags = "-k -p --utc";
-	frequent = 32;
-	hourly = 240;
-	monthly = 2;
+  enable = true;
+  flags = "-k -p --utc";
+  frequent = 32;
+  hourly = 240;
+  monthly = 2;
 };
 };
   #services.cron = {
@@ -101,7 +101,7 @@ hardware.pulseaudio.enable = true;
 # Define a user account. Don't forget to set a password with ‘passwd’.
 users.users.glenda = {
 isNormalUser = true;
-extraGroups = [ "wheel" "libvirtd" "docker" ]; 
+extraGroups = [ "wheel" "libvirtd" "docker" ];
 #defaultUserShell = "zsh";
 };
 
@@ -120,7 +120,7 @@ environment = {
 systemPackages = with pkgs; [
 eww
 doas
-vim neovim helix 
+vim neovim helix
 vscode
 neofetch pfetch
 wget
@@ -156,7 +156,7 @@ bitwarden
 docker docker-compose
 #nur.repos.wolfangaukang.librewolf-bin
 
-nerdfonts
+nerdfonts jetbrains-mono
 #busybox
 coreutils
 shadow
@@ -193,18 +193,18 @@ networking.firewall.allowedTCPPorts = [ 22  8096 ];
 programs = {
    dconf.enable = true;
    zsh = {
-  	enable = true;
-	syntaxHighlighting = {
-	   enable = true;
-	   highlighters = [ "main" "brackets" ];
-	   styles = {
-	   "alias" = "fg=magenta,bold";
-	   };
-	};
-	#ohMyZsh = {
-	#   theme = "robbyrussell";
-	#   plugins = [ "zsh-interactive-cd" ];
-	#};
+    enable = true;
+  syntaxHighlighting = {
+     enable = true;
+     highlighters = [ "main" "brackets" ];
+     styles = {
+     "alias" = "fg=magenta,bold";
+     };
+  };
+  #ohMyZsh = {
+  #   theme = "robbyrussell";
+  #   plugins = [ "zsh-interactive-cd" ];
+  #};
    };
    # enable firejail
    #firejail.enable = true;
@@ -228,7 +228,7 @@ security.sudo.enable = false;
 security.doas.extraRules = [{
 users = [ "glenda" ];
 keepEnv = true;
-persist = true;  
+persist = true;
 }];
 
 
