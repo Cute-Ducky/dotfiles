@@ -1,4 +1,5 @@
 #!/bin/sh
 pushd ~/.dotfiles
-home-manager -f ./users/glenda/home.nix switch
+nix build .#homeManagerConfigurations.glenda.activationPackage
+./result/activate
 popd

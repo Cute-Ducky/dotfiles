@@ -39,13 +39,13 @@ systemd.coredump.enable = false;
 
 services.zfs = {
 autoScrub.enable = true;
-#autoSnapshot = {
-#	enable = true;
-#	#flags = "-k -p --utc";
-#	frequent = 32;
-#	hourly = 240;
-#	monthly = 2;
-#};
+autoSnapshot = {
+	enable = true;
+	flags = "-k -p --utc";
+	frequent = 32;
+	hourly = 240;
+	monthly = 2;
+};
 };
   #services.cron = {
   #  enable = true;
@@ -114,7 +114,7 @@ environment = {
    nixrebuild = "nixos-rebuild switch";
    };
    variables = {
-   PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b ";
+   #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b ";
    };
 
 systemPackages = with pkgs; [
@@ -125,6 +125,7 @@ vscode
 neofetch pfetch
 wget
 firefox librewolf
+emacs
 fluffychat element-desktop
 thunderbird mailspring
 rpi-imager

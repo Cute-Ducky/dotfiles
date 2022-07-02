@@ -1,16 +1,27 @@
-{ pkgs, ... }:
-
-let
-  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
-    url = https://github.com/vlaci/nix-doom-emacs/archive/master.tar.gz;
-    sha256 = "sha256:1g0izscjh5nv4n0n1m58jc6z27i9pkbxs17mnb05a83ffdbmmva6";
-  }) {
-    doomPrivateDir = ./doom.d;  # Directory containing your config.el init.el
-                                # and packages.el files
+{ config, pkgs, ... }:
+{
+home.file = {
+  ".config/emacs".source = pkgs.fetchFromGitHub {
+     owner = "plexus";
+     repo = "chemacs2";
+     rev = "8683883";
+     sha256 = "sha256-XsJ2hHoQGoDbM7J+VvO1u0+f+jJCQqcUqQjzvTlnnG0=";
   };
-in {
-  home.packages = [ doom-emacs ];
-  home.file.".emacs.d/init.el".text = ''
-      (load "default.el")
+
+  ".emacs-profiles.el".text = ''
+(("default" . ((user-emacs-directory . "~/.config/emacs-rational"))))
   '';
+
+
+
+  ".config/emacs-rational" = {
+   source = pkgs.fetchFromGitHub {
+     owner = "SystemCrafters";
+     repo = "rational-emacs";
+     rev = "3c18e6d";
+     sha256 = "sha256-YERbThmpD+IRF591glMtE2n0E/IzFoJ+2quZyKK9yx4=";
+  };
+  recursive = true;
+  };
+};
 }
