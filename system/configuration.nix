@@ -121,6 +121,7 @@ systemPackages = with pkgs; [
 eww
 doas
 vim neovim helix
+go-task
 vscode
 neofetch pfetch
 wget
