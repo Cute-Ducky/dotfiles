@@ -41,18 +41,13 @@ services.zfs = {
 autoScrub.enable = true;
 autoSnapshot = {
   enable = true;
-  flags = "-k -p --utc";
+  flags = "-k -p";
   frequent = 32;
   hourly = 240;
   monthly = 2;
 };
+trim.enable = true;
 };
-  #services.cron = {
-  #  enable = true;
-  #  systemCronJobs = [
-      #"*/1 * * * *      root    bash -c \"zfs snapshot NIXROOT/home@$(date +'%d.%m.%Y-%H:%M'); echo \"$(date +'%d.%m.%Y-%H:%M') snapshot created\" \" >> /tmp/cron.log"
-    #];
-  #};
 networking.hostId = "5ff65061";
 
 # Upgrades

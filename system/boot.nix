@@ -11,19 +11,18 @@ boot = {
            efiSysMountPoint = "/boot";
         };
         grub = {
-           enable = true;
+           enable = false;
            devices = [ "nodev" ];
            efiInstallAsRemovable = true;
            efiSupport = true;
            useOSProber = true;
-           extraConfig = ''
-           serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1
-           terminal_input --append serial
-           terminal_output --append serial
-           '';
            #theme = pkgs.nixos-grub2-theme;
 	   trustedBoot.isHPLaptop = true;
+	   copyKernels = true;
         };
+	systemd-boot = {
+ 	   enable = true;
+	};
    };
    supportedFilesystems = [ "zfs" ]; #  add bcachefs here
    zfs.requestEncryptionCredentials = true;
