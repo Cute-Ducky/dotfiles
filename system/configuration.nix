@@ -126,6 +126,7 @@ vscode
 neofetch pfetch
 wget
 firefox librewolf
+sxiv
 act
 emacs
 fluffychat element-desktop
