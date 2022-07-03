@@ -126,6 +126,7 @@ vscode
 neofetch pfetch
 wget
 firefox librewolf
+diskonaut duf
 sxiv
 act
 emacs
