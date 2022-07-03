@@ -28,6 +28,13 @@
       fsType = "zfs";
     };
 
+  fileSystems."/tmp" = {
+     device = "none";
+     fsType = "tmpfs";
+     options = [ "defaults" "mode=755" ];
+   };
+
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

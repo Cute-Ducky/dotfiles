@@ -11,7 +11,7 @@ boot = {
            efiSysMountPoint = "/boot";
         };
         grub = {
-           enable = false;
+           enable = true;
            devices = [ "nodev" ];
            efiInstallAsRemovable = true;
            efiSupport = true;
@@ -21,8 +21,11 @@ boot = {
 	   copyKernels = true;
         };
 	systemd-boot = {
- 	   enable = true;
+ 	   enable = false;
 	};
+   };
+   initrd = {
+   	enable = true;
    };
    supportedFilesystems = [ "zfs" ]; #  add bcachefs here
    zfs.requestEncryptionCredentials = true;
