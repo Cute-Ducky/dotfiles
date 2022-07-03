@@ -22,6 +22,7 @@ boot = {
            terminal_output --append serial
            '';
            #theme = pkgs.nixos-grub2-theme;
+	   trustedBoot.isHPLaptop = true;
         };
    };
    supportedFilesystems = [ "zfs" ]; #  add bcachefs here
