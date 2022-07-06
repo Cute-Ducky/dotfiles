@@ -23,3 +23,4 @@ tasks:
   auto-snapshot:
     cmds:
       - doas zfs set com.sun:auto-snapshot=true NIXROOT/home
+

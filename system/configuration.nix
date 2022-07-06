@@ -147,7 +147,7 @@ brightnessctl slock
 dwm dmenu alacritty st
 telegram-cli mattermost-desktop session-desktop-appimage tdesktop qtox
 drawterm plan9port
-virt-manager quickemu
+virt-manager quickemu OVMF
 minecraft lunar-client
 git
 feh
@@ -184,9 +184,22 @@ virtualisation.libvirtd.enable = true;
 # Enable the OpenSSH daemon.
 services.openssh.enable = true;
 
+
+networking.firewall = {
+  enable = true;
+  allowedTCPPorts = [ 22 ];
+  allowedUDPPortRanges = [
+    { from = 1714; to = 1764; }
+  ];
+  allowedTCPPortRanges = [
+    { from = 1714; to = 1764; }
+  ];
+};
+
+
 # Open ports in the firewall.
-networking.firewall.allowedTCPPorts = [ 22  8096 ];
-# networking.firewall.allowedUDPPorts = [ ... ];
+#networking.firewall.allowedTCPPorts = [ 22  8096 ];
+#networking.firewall.allowedUDPPorts = [ ... ];
 # Or disable the firewall altogether.
 # networking.firewall.enable = false;
 programs = {
@@ -218,6 +231,8 @@ programs = {
 # keep the signatures' database updated
 services.clamav.daemon.enable = true;
 services.clamav.updater.enable = true;
+
+programs.kdeconnect.enable = true;
 
 
 # Doas
