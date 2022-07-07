@@ -3,6 +3,12 @@
 {
 
 environment.systemPackages = with pkgs; [
+filezilla
+teams
+vscode
+obs-studio
+discord
+go-task
 vim neovim helix
 vscode
 neofetch pfetch
