@@ -36,20 +36,6 @@ hardware.bluetooth.enable = false;
 # disable coredump that could be exploited later
 # and also slow down the system when something crash
 systemd.coredump.enable = false;
-
-services.zfs = {
-autoScrub.enable = true;
-autoSnapshot = {
-  enable = true;
-  flags = "-k -p";
-  frequent = 32;
-  hourly = 240;
-  monthly = 2;
-};
-trim.enable = true;
-};
-networking.hostId = "5ff65061";
-
 # Upgrades
 system.autoUpgrade.enable = true;
 system.autoUpgrade.allowReboot = true;

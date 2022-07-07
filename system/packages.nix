@@ -2,7 +2,7 @@
 
 {
 
-systemPackages = with pkgs; [
+environment.systemPackages = with pkgs; [
 eww
 doas
 vim neovim helix

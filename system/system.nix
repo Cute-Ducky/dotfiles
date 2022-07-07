@@ -9,5 +9,6 @@ imports =
 ./networking.nix
 ./xorg.nix
 ./packages.nix
+./zfs.nix
 ];
 }
