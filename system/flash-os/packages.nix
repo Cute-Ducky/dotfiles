@@ -20,6 +20,7 @@ nerdfonts jetbrains-mono
 #busybox
 coreutils
 shadow
+xorg.xinit
 ];
 
 }
