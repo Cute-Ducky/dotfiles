@@ -14,7 +14,7 @@ tasks:
 
   flash-os:
     cmds:
-      - doas nixos-rebuild --flake .#nixos switch
+      - doas nixos-rebuild --flake .#flash-os switch
 
 
 
