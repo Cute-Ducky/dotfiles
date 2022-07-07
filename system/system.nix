@@ -8,5 +8,6 @@ imports =
 ./configuration.nix
 ./networking.nix
 ./xorg.nix
+./packages.nix
 ];
 }
