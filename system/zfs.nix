@@ -13,5 +13,10 @@ trim.enable = true;
 };
 networking.hostId = "5ff65061";
 
+boot = {
+   supportedFilesystems = [ "zfs" ]; #  add bcachefs here
+   zfs.requestEncryptionCredentials = true; # ZFS only
+};
+
 }
 

@@ -27,8 +27,6 @@ boot = {
    initrd = {
    	enable = true;
    };
-   supportedFilesystems = [ "zfs" ]; #  add bcachefs here
-   zfs.requestEncryptionCredentials = true;
    #plymouth = {
         #enable = true;
    #};

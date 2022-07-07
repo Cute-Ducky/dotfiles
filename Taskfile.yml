@@ -11,6 +11,13 @@ tasks:
     cmds:
       - doas nixos-rebuild --flake .#nixos switch
 
+
+  flash-os:
+    cmds:
+      - doas nixos-rebuild --flake .#nixos switch
+
+
+
   apply-users:
     cmds:
       - nix build .#homeManagerConfigurations.glenda.activationPackage

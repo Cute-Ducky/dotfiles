@@ -29,7 +29,12 @@
 	   modules = [
 	   	./system/system.nix
 	   ];
-
+	};
+	nixos = lib.nixosSystem {
+	   inherit system;
+	   modules = [
+	   	./system/flash-os/system.nix
+	   ];
 	};
 
 };

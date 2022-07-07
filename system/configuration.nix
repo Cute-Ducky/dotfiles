@@ -8,8 +8,6 @@
 {
 imports =
 [ # Include the results of the hardware scan.
-#./hardware-configuration.nix
-#./boot.nix
 ];
 
 # make ready for flakes
@@ -26,12 +24,6 @@ hardware.enableAllFirmware = true;
 nixpkgs.config.allowUnfree = true;
 
 hardware.bluetooth.enable = false;
-
-# Use the systemd-boot EFI boot loader.
-# boot.loader.systemd-boot.enable = true;
-# boot.loader.efi.canTouchEfiVariables = true;
-# 03e1097b-e112-49cf-9cd3-e39e832e29fa
-
 
 # disable coredump that could be exploited later
 # and also slow down the system when something crash
@@ -165,18 +157,5 @@ services.clamav.daemon.enable = true;
 services.clamav.updater.enable = true;
 
 programs.kdeconnect.enable = true;
-
-
-# Doas
-security.doas.enable = true;
-security.sudo.enable = false;
-# Configure doas
-security.doas.extraRules = [{
-users = [ "glenda" ];
-keepEnv = true;
-persist = true;
-}];
-
-
 system.stateVersion = "21.11";
 }
