@@ -12,6 +12,5 @@ imports =
 ../zfs.nix
 ../doas.nix
 ./steam.nix
-./vscode.nix
 ];
 }

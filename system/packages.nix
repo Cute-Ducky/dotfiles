@@ -7,7 +7,7 @@ eww
 doas
 vim neovim helix
 go-task
-vscode
+#vscode
 neofetch pfetch
 wget
 firefox librewolf
@@ -35,10 +35,10 @@ ansible
 jellyfin
 brightnessctl slock
 dwm dmenu alacritty st
-telegram-cli mattermost-desktop session-desktop-appimage tdesktop qtox
+telegram-cli mattermost-desktop session-desktop-appimage #tdesktop qtox
 drawterm plan9port
 virt-manager quickemu OVMF
-minecraft lunar-client
+#minecraft lunar-client
 git
 feh
 bitwarden

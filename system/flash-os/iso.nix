@@ -9,4 +9,7 @@ imports =
 ../doas.nix
 ./steam.nix
 ];
+networking.networkmanager.unmanaged = [
+ "*-foo-bar"
+];
 }
