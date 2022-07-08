@@ -8,7 +8,6 @@
 {
 imports =
 [ # Include the results of the hardware scan.
-./system.nix
 ];
 
 # make ready for flakes

@@ -11,5 +11,6 @@ imports =
 ./packages.nix
 ./zfs.nix
 ./doas.nix
+./configuration.nix
 ];
 }
