@@ -19,7 +19,7 @@ cpu() {
 }
 
 battery() {
-  get_capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+  get_capacity="$(cat /sys/class/power_supply/BAT1/capacity)"
   printf "^c$blue^ $get_capacity%%"
 }
 

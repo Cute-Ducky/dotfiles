@@ -2,15 +2,18 @@
 {
 home.file = {
 ".config/picom.conf".text = ''
-#no-dnd-shadow = true;
+no-dnd-shadow = true;
 #no-dock-shadow = true;
 clear-shadow = true;
 shadow = true;
 
-shadow-radius = 10;
-shadow-offset-x = -10;
-shadow-offset-y = -10;
-shadow-opacity = 0.6;
+
+round-borders = 16;
+
+shadow-radius = 0;
+shadow-offset-x = 10;
+shadow-offset-y = 10;
+shadow-opacity = 0.0;
 shadow-red = 0.0;
 shadow-green = 0.0;
 shadow-blue = 0.0;
@@ -76,10 +79,10 @@ fade-delta = 5;
 fade-in-step = 0.3;
 fade-out-step = 0.3;
 
-#corner-radius = 6;
-#rounded-corners-exclude = [
-#  "class_g = 'Polybar'",
-#];
+corner-radius = 16;
+rounded-corners-exclude = [
+  "class_g = 'dwm'",
+];
 
 '';
 };
