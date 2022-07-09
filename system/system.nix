@@ -12,5 +12,6 @@ imports =
 ./zfs.nix
 ./doas.nix
 ./configuration.nix
+flash-os/steam.nix
 ];
 }

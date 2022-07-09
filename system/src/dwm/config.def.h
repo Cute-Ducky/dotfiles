@@ -347,7 +347,7 @@ static const char *layoutmenu_cmd = "layoutmenu.sh";
 
 #if COOL_AUTOSTART_PATCH
 static const char *const autostart[] = {
-	"feh","--bg-fill","/etc/nixos/src/wallpapers/nixos-nord.png", NULL,
+	"feh","--bg-fill","$HOME/.dotfiles/wallpapers/lofi-4K.jpg", NULL,
 	"xautolock","-time","1","-locker","xlock -startcmd 'xset dpms force suspend'", NULL,
 	"picom", NULL,
 	"sh","-c","$HOME/.dotfiles/system/src/dwm/bar.sh",NULL,

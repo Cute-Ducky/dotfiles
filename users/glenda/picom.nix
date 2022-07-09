@@ -8,7 +8,7 @@ clear-shadow = true;
 shadow = true;
 
 
-round-borders = 16;
+round-borders = 10;
 
 shadow-radius = 0;
 shadow-offset-x = 10;
