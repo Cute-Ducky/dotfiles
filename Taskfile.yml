@@ -31,3 +31,6 @@ tasks:
     cmds:
       - doas zfs set com.sun:auto-snapshot=true NIXROOT/home
 
+  cp-hardware:
+    cmds:
+      - cp -f /etc/nixos/hardware-configuration.nix system
