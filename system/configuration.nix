@@ -29,9 +29,9 @@ hardware.bluetooth.enable = false;
 # and also slow down the system when something crash
 systemd.coredump.enable = false;
 # Upgrades
-system.autoUpgrade.enable = true;
-system.autoUpgrade.allowReboot = true;
-system.autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable/";
+#system.autoUpgrade.enable = true;
+#system.autoUpgrade.allowReboot = true;
+#system.autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable/";
 
 # Set your time zone.
 time.timeZone = "Europe/Berlin";
