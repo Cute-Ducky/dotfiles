@@ -19,6 +19,7 @@ emacs
 fluffychat element-desktop
 thunderbird mailspring
 rpi-imager
+gotop
 xautolock
 xlockmore
 qbittorrent
