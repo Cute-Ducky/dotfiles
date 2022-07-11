@@ -26,6 +26,7 @@ imports = [
   home.packages = with pkgs; [
 	bat
 	gcc
+        ripgrep
   ];
   programs.git = {
   package = pkgs.gitAndTools.gitFull;
