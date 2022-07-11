@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+lazygit
 nitrogen
 eww
 doas
