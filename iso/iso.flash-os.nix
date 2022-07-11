@@ -5,6 +5,6 @@
     # Provide an initial copy of the NixOS channel so that the user
     # doesn't need to run "nix-channel --update" first.
     ../system/flash-os/iso.nix
-    <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
+    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-graphical-calamares.nix>
   ];
 }
