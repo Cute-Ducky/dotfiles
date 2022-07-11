@@ -5,6 +5,6 @@ users.users.glenda = {
   home  = "/home/glenda";
   description  = "Glenda from outer space";
   extraGroups = [ "wheel" "libvirtd" "docker" ];
-  gid = 1000;
+  #gid = 1000;
 };
 }
