@@ -1,4 +1,4 @@
-{ ... }:
+{  config, pkgs, ... }:
 {
 home.file = {
   ".config/nvim" = {
@@ -6,7 +6,7 @@ home.file = {
      owner = "NvChad";
      repo = "NvChad";
      rev = "86b3b6e";
-     sha256 = "sha256-XsJ2hHoQGoDbM7J+VvO1u0+f+jJCQqcUqQjzvTlnnG0=";
+     sha256 = "sha256-f70ymAwIRI4Xz9R8YfA16PBOX6ZgJzZ9FBa9LezSlwc=";
   };
   recursive = true;
 };
