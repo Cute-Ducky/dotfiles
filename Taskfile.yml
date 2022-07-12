@@ -40,3 +40,12 @@ tasks:
       - task: update
       - git add flake.lock
       - git commit -m "update"
+
+  iso:
+    cmds:
+      - nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=system/iso.nix
+
+  flash-os-iso:
+    cmds:
+      - nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=system/flash-os/iso.nix
+

@@ -5,8 +5,8 @@ home.file = {
   source = pkgs.fetchFromGitHub {
      owner = "NvChad";
      repo = "NvChad";
-     rev = "86b3b6e";
-     sha256 = "sha256-f70ymAwIRI4Xz9R8YfA16PBOX6ZgJzZ9FBa9LezSlwc=";
+     rev = "7b683ea";
+     sha256 = "sha256-MCOaXZA0kQu4bTCeX5uatgfKBf3DBZ8j2LkpsOBOaPY=";
   };
   recursive = true;
 };
