@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+pavucontrol
 lazygit
 nitrogen
 eww
