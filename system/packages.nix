@@ -26,6 +26,7 @@ xlockmore
 qbittorrent
 qemu_full
 openssl
+libreoffice-fresh
 #php
 espeak
 # Programming languages
