@@ -23,7 +23,6 @@ imports =
 
 hardware.enableAllFirmware = true;
 nixpkgs.config.allowUnfree = true;
-
 hardware.bluetooth.enable = false;
 
 # disable coredump that could be exploited later
@@ -69,8 +68,8 @@ nixpkgs.config.packageOverrides = pkgs: {
 
 # Enable sound.
 sound.enable = true;
+nixpkgs.config.pulseaudio = true;
 hardware.pulseaudio.enable = true;
-
 
 # List packages installed in system profile. To search, run:
 # $ nix search wget
