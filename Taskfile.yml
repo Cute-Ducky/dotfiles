@@ -16,7 +16,7 @@ tasks:
 
   apply-users:
     cmds:
-      - nix build .#homeManagerConfigurations.glenda.activationPackage
+      - cd users/glenda && nix build .#homeManagerConfigurations.glenda.activationPackage
       - ./result/activate
 
   update-system:
