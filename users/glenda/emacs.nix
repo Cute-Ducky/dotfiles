@@ -50,11 +50,11 @@ home.file = {
   :config
   (which-key-mode)
   (setq which-key-idle-delay 1))
-
+(require 'ed)
 '';
   recursive = true;
   };
-
+  ".config/rational-emacs/rational-emacs/ed.el".source = ./ed.el
   ".config/rational-emacs" = {
    source = pkgs.fetchFromGitHub {
      owner = "SystemCrafters";
