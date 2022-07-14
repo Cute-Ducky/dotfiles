@@ -1,6 +1,11 @@
 version: '3'
 
 tasks:
+  new-system:
+    cmds:
+      - task: cp-hardware
+      - task: apply
+
   apply:
     cmds:
       - task: apply-system
@@ -16,7 +21,7 @@ tasks:
 
   apply-users:
     cmds:
-      - cd users/glenda && nix build .#homeManagerConfigurations.glenda.activationPackage
+      - nix build .#homeManagerConfigurations.glenda.activationPackage
       - ./result/activate
 
   update-system:
@@ -48,4 +53,10 @@ tasks:
   flash-os-iso:
     cmds:
       - nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=system/flash-os/iso.nix
+
+
+  pull:
+    cmds:
+      - git pull
+
 

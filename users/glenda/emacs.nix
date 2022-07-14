@@ -54,7 +54,7 @@ home.file = {
 '';
   recursive = true;
   };
-  ".config/rational-emacs/rational-emacs/ed.el".source = ./ed.el;
+  ".config/rational-emacs/rational-emacs/ed.el".source = ./ed-mode.el;
   ".config/rational-emacs" = {
    source = pkgs.fetchFromGitHub {
      owner = "SystemCrafters";

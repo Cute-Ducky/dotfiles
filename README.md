@@ -6,25 +6,41 @@
 
 ### ❄️ [nixos](https://nixos.org/)
 
-## Install
+# Getting started:
+------------------
+## Apply on a new system
+This is a alias to `task cp-hardware` and `task apply`.
+```sh
+task new-system
+```
+## Usage
+
+### Apply
 
 ```sh
 task apply
 ```
 
-## Usage
-
 ### Build iso
 ```
-cd iso
 task iso
 ```
 ### Buid iso flash-os
 ```
-cd iso
-task flash-os
+task flash-os-iso
 ```
-
+### Pull update from upstream
+```sh
+task pull-update
+```
+or
+```sh
+git pull
+```
+to pull and apply a update just simpily run:
+```sh
+task pull apply
+```
 ## Author
 
 👤 **9glenda**
