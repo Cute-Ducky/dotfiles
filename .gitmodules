@@ -1,0 +1,3 @@
+[submodule "system/src/dwm-new"]
+	path = system/src/dwm-new
+	url = https://github.com/bakkeby/dwm-flexipatch.git
