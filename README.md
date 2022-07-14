@@ -3,6 +3,7 @@
 </p>
 
 > My nixos dotfiles/config deployed as a flake
+<img title="screenshot" alt="rice" src="/images/screenshot1.png">
 
 ### ❄️ [nixos](https://nixos.org/)
 
