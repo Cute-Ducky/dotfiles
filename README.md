@@ -8,7 +8,6 @@
 ### ❄️ [nixos](https://nixos.org/)
 
 # Getting started:
-------------------
 ## Apply on a new system
 This is a alias to `task cp-hardware` and `task apply`.
 ```sh
