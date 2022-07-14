@@ -58,6 +58,7 @@ tasks:
 
   pull:
     cmds:
+      - task: clone
       - git pull
 
 

@@ -33,10 +33,6 @@ task flash-os-iso
 ```sh
 task pull
 ```
-or
-```sh
-git pull
-```
 to pull and apply a update just simpily run:
 ```sh
 task pull apply
