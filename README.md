@@ -31,7 +31,7 @@ task flash-os-iso
 ```
 ### Pull update from upstream
 ```sh
-task pull-update
+task pull
 ```
 or
 ```sh
