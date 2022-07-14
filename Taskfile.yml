@@ -10,7 +10,7 @@ tasks:
   apply:
     cmds:
       - mkdir -p system/src/dwm-current
-      - cp -rf system/src/dwm-new/ system/src/dwm-current
+      - cp -rf system/src/dwm-new/* system/src/dwm-current
       - task: apply-system
       - task: apply-users
 

@@ -4,7 +4,7 @@
 {
  nixpkgs.overlays = [
      (final: prev: {
-            dwm = prev.dwm.overrideAttrs (old: { src = ./src/dwm-current;});
+            dwm = prev.dwm.overrideAttrs (old: { src = ./src/dwm;});
             #slock = prev.slock.overrideAttrs (old: {src = ./src/slock ;});
           })
       ];

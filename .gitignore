@@ -3,4 +3,3 @@ iso/result
 .tmp
 system/hardware-configuration.nix
 core.*
-system/src/dwm-current/*
