@@ -9,7 +9,7 @@
 
 # Getting started:
 ## Apply on a new system
-This is a alias to `task cp-hardware` and `task apply`.
+This is a alias to `clone`, `task cp-hardware` and `task apply`.
 ```sh
 task new-system
 ```

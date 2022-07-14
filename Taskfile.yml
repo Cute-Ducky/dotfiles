@@ -3,6 +3,7 @@ version: '3'
 tasks:
   new-system:
     cmds:
+      - task: clone
       - task: cp-hardware
       - task: apply
 
@@ -60,3 +61,6 @@ tasks:
       - git pull
 
 
+  clone:
+    cmds:
+      - git submodule update --init --recursive
