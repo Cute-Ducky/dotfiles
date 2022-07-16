@@ -3,7 +3,6 @@ version: '3'
 tasks:
   new-system:
     cmds:
-      - task: clone
       - task: cp-hardware
       - task: apply
 
