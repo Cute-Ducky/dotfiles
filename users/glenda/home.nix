@@ -32,7 +32,7 @@ imports = [
   package = pkgs.gitAndTools.gitFull;
   enable = true;
   userName = "9glenda";
-  userEmail = "9glenda@nixmail.com";
+  userEmail = "utody0plz@mozmail.com";
   #init = { defaultBranch = "main"; } ;  
   };
    home.file = {

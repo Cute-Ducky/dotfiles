@@ -29,10 +29,12 @@ qemu_full
 openssl
 libreoffice-fresh
 #php
+libimobiledevice
 espeak
 # Programming languages
 cargo rustup rustc
 go
+#gnupg pinentry #broken for some reason FIXME
 gcc tinycc clang
 bash zsh fish mksh
 bitwarden bitwarden-cli

@@ -58,14 +58,8 @@ tasks:
 
   pull:
     cmds:
-      - task: clone
       - git pull
 
-
-  clone:
-    cmds:
-      - git submodule update --init --recursive
-  
   push:
     cmds:
       - task: apply
