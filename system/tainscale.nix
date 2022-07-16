@@ -14,10 +14,9 @@ networking.firewall = {
     allowedUDPPorts = [ config.services.tailscale.port ];
 
     # allow you to SSH in over the public internet
-    allowedTCPPorts = [ 22 ];
+    allowedTCPPorts = [ 22 8096 ];
 
+   checkReversePath = "loose";
    };
-
-
 
 }
