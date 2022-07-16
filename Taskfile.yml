@@ -63,3 +63,7 @@ tasks:
     cmds:
       - task: apply
       - git push
+  jellyfin:
+    cmds:
+      - doas mkdir /jellyfin
+      - doas chown -R jellyfin:jellyfin /jellyfin
