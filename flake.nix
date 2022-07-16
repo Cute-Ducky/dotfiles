@@ -32,7 +32,7 @@
 ./system/networking.nix
 ./system/xorg.nix
 ./system/packages.nix
-./system.zfs.nix
+./system/zfs.nix
 ./system/doas.nix
 ./system/configuration.nix
 ./system/flash-os/steam.nix
