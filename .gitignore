@@ -3,3 +3,4 @@ iso/result
 .tmp
 system/hardware-configuration.nix
 core.*
+cp system/key.nix
