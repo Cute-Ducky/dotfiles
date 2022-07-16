@@ -149,6 +149,7 @@ programs = {
 services.clamav.daemon.enable = true;
 services.clamav.updater.enable = true;
 
+
 programs.kdeconnect.enable = true;
 system.stateVersion = "21.11";
 }

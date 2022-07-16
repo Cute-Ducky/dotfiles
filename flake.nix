@@ -26,13 +26,25 @@
   nixos = lib.nixosSystem {
      inherit system;
      modules = [
-        ./system/system.nix
+        #./system/system.nix
+./system/hardware-configuration.nix
+./system/boot.nix
+./system/networking.nix
+./system/xorg.nix
+./system/packages.nix
+./system.zfs.nix
+./system/doas.nix
+./system/configuration.nix
+./system/flash-os/steam.nix
+./system/jellyfin.nix
+
      ];
   };
   flash-os = lib.nixosSystem {
      inherit system;
      modules = [
         ./system/flash-os/system.nix
+
      ];
   };
 
