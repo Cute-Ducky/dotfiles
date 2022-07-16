@@ -1,11 +1,10 @@
 { ... }:
 {
+   services.jellyfin.enable = true;
+   services.jellyfin.openFirewall = true;
+   services.jellyfin.user = "jellyfin";
 users.users.jellyfin = {
-  isNormalUser = flase;
+  isNormalUser = false;
   description  = "user running the jellyfin service";
  };
-}
-   services.jellyfin.enable = true;
-   services.jellyfin.openFirewall = ture;
-   services.jellyfin.user = ture;
 }
