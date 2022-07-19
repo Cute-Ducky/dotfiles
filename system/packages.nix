@@ -31,6 +31,7 @@ libreoffice-fresh
 #php
 libimobiledevice
 espeak
+scrot
 gptfdisk
 # Programming languages
 cargo rustup rustc

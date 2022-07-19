@@ -46,14 +46,15 @@ server = lib.nixosSystem {
      inherit system;
      modules = [
 ./system/hardware-configuration.nix
-./system/boot.nix
+./system/systemd-boot.nix
+#./system/boot.nix
 ./system/networking.nix
-./system/xorg.nix
-./system/packages.nix
-./system/zfs.nix
+#./system/xorg.nix
+#./system/packages.nix
+#./system/zfs.nix
 ./system/doas.nix
 ./system/configuration.nix
-./system/flash-os/steam.nix
+#./system/flash-os/steam.nix
 ./system/jellyfin.nix
 ./system/firewall.nix
 ./system/tainscale.nix

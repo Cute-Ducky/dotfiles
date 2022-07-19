@@ -13,14 +13,14 @@ tasks:
 
   apply-system:
     cmds:
-      - doas nixos-rebuild --flake -p nixconf .#nixos switch
+      - doas nixos-rebuild --flake .#nixos -p nixconf switch
 
   flash-os:
     cmds:
       - doas nixos-rebuild --flake .#flash-os -p flash-os switch
   server:
     cmds:
-      - doas nixos-rebuild --flake -p nixconf .#server switch
+      - doas nixos-rebuild --flake .#server -p server switch
 
   apply-users:
     cmds:
