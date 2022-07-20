@@ -7,3 +7,4 @@ root+="2"
 
 echo "$boot"
 echo "$root"
+gdisk "/dev/$disk"
