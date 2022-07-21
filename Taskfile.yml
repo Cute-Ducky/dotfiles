@@ -30,14 +30,13 @@ tasks:
     cmds:
       - task: hostid
       - task: apply-system-snow
-      - task: apply-users
+      - task: apply-users-snow
       - task: rm-hostid
 
-  apply-users:
+  apply-users-snow:
     cmds:
-      - nix build .#homeManagerConfigurations.glenda.activationPackage
+      - nix build .#homeManagerConfigurations.cducky.activationPackage
       - ./result/activate
-
 
 
   check:

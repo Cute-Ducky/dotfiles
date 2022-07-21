@@ -113,7 +113,7 @@ server = lib.nixosSystem {
     stateVersion = "22.05";
     configuration = {
     imports = [
-    ./users/glenda/home.nix
+    ./users/cducky/home.nix
     ];
     };
     };
