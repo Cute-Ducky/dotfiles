@@ -40,9 +40,11 @@
 ./system/jellyfin.nix
 ./system/firewall.nix
 ./system/tainscale.nix
+./system/users.nix
 
      ];
   };
+# snow
 snow = lib.nixosSystem {
      inherit system;
      modules = [
@@ -56,6 +58,7 @@ snow = lib.nixosSystem {
 ./system/doas.nix
 ./system/configuration.nix
 ./system/firewall.nix
+./system/snow/users.nix
 ];
   };
 
@@ -95,6 +98,18 @@ server = lib.nixosSystem {
     inherit system pkgs;
     username = "glenda";
     homeDirectory = "/home/glenda";
+    stateVersion = "22.05";
+    configuration = {
+    imports = [
+    ./users/glenda/home.nix
+    ];
+    };
+    };
+    # snow
+    cducky = home-manager.lib.homeManagerConfiguration  {
+    inherit system pkgs;
+    username = "cducky";
+    homeDirectory = "/home/cducky";
     stateVersion = "22.05";
     configuration = {
     imports = [
