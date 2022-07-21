@@ -27,6 +27,7 @@
      inherit system;
      modules = [
 #./system/system.nix
+#./lib/modules.nix
 ./system/hardware-configuration.nix
 ./system/boot.nix
 ./system/networking.nix
