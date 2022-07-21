@@ -21,7 +21,7 @@ imports =
 
 
 # zfs
-networking.hostId = "<hostId>";
+networking.hostId = "1HostId1";
 
 hardware.enableAllFirmware = true;
 nixpkgs.config.allowUnfree = true;
