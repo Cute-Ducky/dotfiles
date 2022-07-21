@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+cachix
 pavucontrol
 lazygit
 nitrogen
