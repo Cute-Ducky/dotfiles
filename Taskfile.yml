@@ -26,7 +26,7 @@ tasks:
   
   rm-hostid:
     cmds:
-      - sed -i "s/$(head -c 8 /etc/machine-id)/1235571/g" system/configuration.nix
+      - sed -i "s/$(head -c 8 /etc/machine-id)/12355671/g" system/configuration.nix
  
   flash-os:
     cmds:
