@@ -22,11 +22,11 @@ tasks:
       - nix flake check
   hostid:
     cmds:
-      - sed -i "s/1hostid1/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
+      - sed -i "s/12355671/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
   
   rm-hostid:
     cmds:
-      - sed -i "s/$(head -c 8 /etc/machine-id)/1hostid1/g" system/configuration.nix
+      - sed -i "s/$(head -c 8 /etc/machine-id)/1235571/g" system/configuration.nix
  
   flash-os:
     cmds:
