@@ -6,18 +6,25 @@ tasks:
       - task: cp-hardware
       - task: apply
 
-
-  new-system-snow:
-    cmds:
-      - task: cp-hardware
-      - task: apply-snow
-
   apply:
     cmds:
       - task: hostid
       - task: apply-system
       - task: apply-users
       - task: rm-hostid
+  apply-system:
+    cmds:
+      - ./misc/root nixos-rebuild --flake .#nixos -p nixconf switch
+
+  # snow
+  apply-system-snow:
+    cmds:
+      - ./misc/root nixos-rebuild --flake .#snow -p snow switch
+
+  new-system-snow:
+    cmds:
+      - task: cp-hardware
+      - task: apply-snow
 
   apply-snow:
     cmds:
@@ -26,13 +33,12 @@ tasks:
       - task: apply-users
       - task: rm-hostid
 
-  apply-system:
+  apply-users:
     cmds:
-      - ./misc/root nixos-rebuild --flake .#nixos -p nixconf switch
+      - nix build .#homeManagerConfigurations.glenda.activationPackage
+      - ./result/activate
 
-  apply-system-snow:
-    cmds:
-      - ./misc/root nixos-rebuild --flake .#snow -p snow switch
+
 
   check:
     cmds:

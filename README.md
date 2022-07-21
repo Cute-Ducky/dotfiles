@@ -19,7 +19,7 @@ task new-system
 ```
 ## snow-os
 ```sh
-task new-system-snow-snow
+task new-system-snow
 ```
 
 ## Usage

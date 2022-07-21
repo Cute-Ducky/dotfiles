@@ -4,3 +4,5 @@ iso/result
 system/hardware-configuration.nix
 core.*
 system/key.nix
+
+TODELETEONEDAY
