@@ -20,8 +20,7 @@ imports =
    };
 
 
-# zfs
-networking.hostId = "5ff65061";
+networking.hostId = "12355671";
 
 hardware.enableAllFirmware = true;
 nixpkgs.config.allowUnfree = true;
@@ -81,9 +80,9 @@ environment = {
    shellAliases = {
    nixrebuild = "nixos-rebuild switch";
    };
-   variables = {
-   #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b ";
-   };
+   #variables = {
+
+   #};
 
 };
 # jellyfin
