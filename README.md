@@ -8,6 +8,10 @@
 ### ❄️ [nixos](https://nixos.org/)
 
 # Getting started:
+## Open a nix-shell
+```sh
+nix-shell
+```
 ## Apply on a new system
 This is a alias to `cp-hardware` and `apply`.
 ```sh
