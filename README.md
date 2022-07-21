@@ -46,6 +46,14 @@ to pull and apply a update just simpily run:
 ```sh
 task pull apply
 ```
+## Configs
+
+| Name.       | Description |
+| ----------- | ----------- |
+| Nixconf     | The standard config |
+| Snow   | More minimal version of nixconf        |
+| Flash-OS | More beginner friendly config with patheon desktop |
+| Server | Config build to be used on a server |
 ## Need a custome config?
 Contact me in a issue and we can discuss the details. Obviosly this service is free.
 ## Author
