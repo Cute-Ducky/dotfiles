@@ -8,13 +8,23 @@ tasks:
 
   apply:
     cmds:
+      - task: hostid
       - task: apply-system
       - task: apply-users
+      - task: rm-hostid
 
   apply-system:
     cmds:
       - doas nixos-rebuild --flake .#nixos -p nixconf switch
 
+  hostid:
+    cmds:
+      - sed -i "s/<insertHostId>/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
+  
+  rm-hostid:
+    cmds:
+      - sed -i "s/$(head -c 8 /etc/machine-id)/<insertHostId>/g" system/configuration.nix
+ 
   flash-os:
     cmds:
       - doas nixos-rebuild --flake .#flash-os -p flash-os switch

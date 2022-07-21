@@ -11,7 +11,7 @@ autoSnapshot = {
 };
 trim.enable = true;
 };
-networking.hostId = "5ff65061";
+#networking.hostId = "5ff65061";
 
 boot = {
    supportedFilesystems = [ "zfs" ]; #  add bcachefs here
