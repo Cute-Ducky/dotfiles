@@ -28,6 +28,7 @@
      riseup-vpn
      cloudflare-warp
      fluffychat
+     go-task
    ];
 
 }
