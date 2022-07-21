@@ -4,6 +4,7 @@
 
 environment.systemPackages = with pkgs; [
 cachix
+tabbed-siduck
 pavucontrol
 lazygit
 nitrogen
