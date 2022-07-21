@@ -15,7 +15,7 @@ tasks:
 
   apply-system:
     cmds:
-      - doas nixos-rebuild --flake .#nixos -p nixconf switch
+      - ./misc/root nixos-rebuild --flake .#nixos -p nixconf switch
 
   check:
     cmds:
@@ -30,10 +30,10 @@ tasks:
  
   flash-os:
     cmds:
-      - doas nixos-rebuild --flake .#flash-os -p flash-os switch
+      - ./misc/root nixos-rebuild --flake .#flash-os -p flash-os switch
   server:
     cmds:
-      - doas nixos-rebuild --flake .#server -p server switch
+      - ./misc/root nixos-rebuild --flake .#server -p server switch
 
   apply-users:
     cmds:
@@ -46,7 +46,7 @@ tasks:
 
   auto-snapshot:
     cmds:
-      - doas zfs set com.sun:auto-snapshot=true NIXROOT/home
+      - ./misc/root zfs set com.sun:auto-snapshot=true NIXROOT/home
 
   cp-hardware:
     cmds:
@@ -82,5 +82,5 @@ tasks:
       - git push
   jellyfin:
     cmds:
-      - doas mkdir /jellyfin
-      - doas chown -R jellyfin:jellyfin /jellyfin
+      - ./misc/root mkdir /jellyfin
+      - ./misc/root chown -R jellyfin:jellyfin /jellyfin
