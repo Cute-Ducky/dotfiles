@@ -19,11 +19,11 @@ tasks:
 
   hostid:
     cmds:
-      - sed -i "s/<insertHostId>/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
+      - sed -i "s/<hostId>/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
   
   rm-hostid:
     cmds:
-      - sed -i "s/$(head -c 8 /etc/machine-id)/<insertHostId>/g" system/configuration.nix
+      - sed -i "s/$(head -c 8 /etc/machine-id)/<hostId>/g" system/configuration.nix
  
   flash-os:
     cmds:
