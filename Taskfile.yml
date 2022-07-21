@@ -39,7 +39,7 @@ tasks:
     cmds:
       - sed -i "s/$(head -c 8 /etc/machine-id)/12355671/g" system/configuration.nix
  
-  flash-os:
+  apply-flash-os:
     cmds:
       - ./misc/root nixos-rebuild --flake .#flash-os -p flash-os switch
   server:
