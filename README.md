@@ -46,6 +46,8 @@ to pull and apply a update just simpily run:
 ```sh
 task pull apply
 ```
+## Need a custome config?
+Contact me in a issue and we can discuss the details. Obviosly this service is free.
 ## Author
 
 👤 **9glenda**
