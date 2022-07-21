@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to dotfiles 👋</h1>
+<h1 align="center">Welcome to my nixos ❄️ dotfiles </h1>
 <p>
 </p>
 
