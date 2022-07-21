@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
 services.zfs = {
 autoScrub.enable = true;
