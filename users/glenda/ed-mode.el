@@ -67,7 +67,7 @@
     ("a" "ed-cmd-append")
     ("c" "ed-cmd-change")
     ("d" "ed-cmd-delete")
-    ("e" "ed-cmd-edit-file")
+    ;;("e" "ed-cmd-edit-file")
     ;;("E" "ed-cmd-edit-file-unconditionally")
     ("f" "ed-cmd-file")
     ;;("g" "ed-cmd-global")
@@ -91,7 +91,7 @@
     ;;("v" "ed-cmd-global-inverse")
     ;;("V" "ed-cmd-global-interactive-inverse")
     ("w" "ed-cmd-write")
-    ("wq" "ed-cmd-write-and-quit")
+    ;;("wq" "ed-cmd-write-and-quit")
     ;;("W" "ed-cmd-write-append")
     ;;("x" "ed-cmd-paste")
     ;;("y" "ed-cmd-copy")
@@ -552,3 +552,4 @@ replace it."
 (provide 'ed)
 
 ;;; ed-mode.el ends here.
+
