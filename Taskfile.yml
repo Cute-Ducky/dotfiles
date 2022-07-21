@@ -6,6 +6,12 @@ tasks:
       - task: cp-hardware
       - task: apply
 
+
+  new-system-snow:
+    cmds:
+      - task: cp-hardware
+      - task: apply-snow
+
   apply:
     cmds:
       - task: hostid

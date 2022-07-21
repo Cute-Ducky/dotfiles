@@ -9,10 +9,15 @@
 
 # Getting started:
 ## Apply on a new system
-This is a alias to `clone`, `task cp-hardware` and `task apply`.
+This is a alias to `cp-hardware` and `apply`.
 ```sh
 task new-system
 ```
+## snow-os
+```sh
+task new-system-snow-snow
+```
+
 ## Usage
 
 ### Apply
