@@ -42,6 +42,24 @@
 
      ];
   };
+snow = lib.nixosSystem {
+     inherit system;
+     modules = [
+#./system/system.nix
+./system/hardware-configuration.nix
+./system/boot.nix
+./system/networking.nix
+./system/xorg.nix
+./system/snow/packages.nix
+./system/zfs.nix
+./system/doas.nix
+./system/configuration.nix
+./system/firewall.nix
+];
+  };
+
+
+
 server = lib.nixosSystem {
      inherit system;
      modules = [

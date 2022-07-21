@@ -13,9 +13,20 @@ tasks:
       - task: apply-users
       - task: rm-hostid
 
+  apply-snow:
+    cmds:
+      - task: hostid
+      - task: apply-system-snow
+      - task: apply-users
+      - task: rm-hostid
+
   apply-system:
     cmds:
       - ./misc/root nixos-rebuild --flake .#nixos -p nixconf switch
+
+  apply-system-snow:
+    cmds:
+      - ./misc/root nixos-rebuild --flake .#snow -p snow switch
 
   check:
     cmds:
@@ -39,10 +50,6 @@ tasks:
     cmds:
       - nix build .#homeManagerConfigurations.glenda.activationPackage
       - ./result/activate
-
-  update-system:
-    cmds:
-      - nix flake update
 
   auto-snapshot:
     cmds:
@@ -80,6 +87,7 @@ tasks:
       - task: apply
       - task: check
       - git push
+
   jellyfin:
     cmds:
       - ./misc/root mkdir /jellyfin
