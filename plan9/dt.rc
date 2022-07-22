@@ -1,0 +1,43 @@
+#!/bin/rc
+
+drive='sdC0'
+authdom='Somewhere'
+ipnet='Home'
+ipmask='255.255.255.0'
+ipgw='192.168.122.1'
+dns='192.168.122.1'
+ip/ipconfig
+9fs 9fat
+cd /n/9fat
+# only for testing:
+cp p plan9.ini
+cp plan9.ini plan9.init.old
+ip=`{awk 'FNR == 4 {print $1}' < /net/ipselftab}
+cat <<EOF  >> /n/9fat/plan9.ini
+nobootprompt=local!/dev/$drive -m 832 -A -a tcp!*!564
+user=$user
+auth=$ip
+cpu=$ip
+authdom=$authdom
+service=cpu
+EOF
+cp /lib/ndb/local /usr/glenda/local
+cat <<EOF >> /lib/ndb/local
+authdom=$authdom auth=$ip
+ipnet=$ipnet ip=$ip ipmask=$ipmask
+	ipgw=$ipgw
+	auth=$ip
+	authdom=$authdom
+	fs=$ip
+	cpu=$ip
+	dns=$dns
+EOF
+cat <<EOF
+authdom: $authdom
+user: $user
+now run:
+auth/wrkey
+auth/keyfs
+auth/changeuser
+echo sync > /srv/hjfs.cmd
+EOF
