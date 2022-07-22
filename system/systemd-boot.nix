@@ -3,6 +3,7 @@
    
 boot = {
    loader = {
+        efi.efiSysMountPoint = "/boot/efi";
         systemd-boot = {
               enable = true;
            }; 
