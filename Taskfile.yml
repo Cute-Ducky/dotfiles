@@ -38,10 +38,10 @@ tasks:
       - nix build .#homeManagerConfigurations.cducky.activationPackage
       - ./result/activate
 
-
   check:
     cmds:
       - nix flake check
+
   hostid:
     cmds:
       - sed -i "s/12355671/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
@@ -78,7 +78,7 @@ tasks:
     cmds:
       - task: update
       - git add flake.lock
-      - git commit -m "update"
+      - git commit -m "update flake.lock"
 
   iso:
     cmds:
