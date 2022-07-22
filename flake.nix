@@ -28,6 +28,7 @@
      modules = [
 #./system/system.nix
 #./lib/modules.nix
+./system/ssh.nix
 ./system/hardware-configuration.nix
 ./system/boot.nix
 ./system/networking.nix
@@ -69,6 +70,7 @@ server = lib.nixosSystem {
      modules = [
 ./system/hardware-configuration.nix
 ./system/systemd-boot.nix
+./system/ssh.nix
 #./system/boot.nix
 ./system/networking.nix
 #./system/xorg.nix
@@ -88,6 +90,7 @@ server = lib.nixosSystem {
      inherit system;
      modules = [
         ./system/flash-os/system.nix
+        ./system/ssh.nix
 
      ];
   };
