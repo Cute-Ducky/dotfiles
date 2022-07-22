@@ -19,5 +19,10 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
           nix_path: "nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz"
+      - name: "Install Cachix ❄️"
+        uses: cachix/cachix-action@v10
+        with:
+          name: gvolpe-nixos
+          authToken: "$\{\{ secrets.CACHIX_AUTH_TOKEN \}}"  
       - name: Flake
         run: nix flake check
