@@ -24,5 +24,10 @@ jobs:
         with:
           name: gvolpe-nixos
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"  
+
+      # Needed because cachix is also installed by Home Manager
+      - name: "Set priority flag for Cachix 🚩"
+        run: nix-env --set-flag priority 0 cachix
+
       - name: Flake
         run: nix flake check
