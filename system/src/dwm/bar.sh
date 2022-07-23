@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# thanks to @siduck
 interval=0
 
 # load colors
