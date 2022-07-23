@@ -25,8 +25,6 @@
      neofetch
      firefox
      tdesktop
-     riseup-vpn
-     cloudflare-warp
      fluffychat
      go-task
    ];
