@@ -95,7 +95,6 @@ tasks:
 
   test:
     cmds:
-      - task: apply-server
       - task: apply-flash-os
       - task: apply-snow
       - task: apply
