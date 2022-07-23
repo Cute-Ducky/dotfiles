@@ -35,7 +35,7 @@ tasks:
 
   apply-users-snow:
     cmds:
-      - nix build .#homeManagerConfigurations.cducky.activationPackage
+      - nix build .#homeManagerConfigurations.glenda.activationPackage
       - ./result/activate
 
   check:

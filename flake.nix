@@ -109,14 +109,14 @@ server = lib.nixosSystem {
     };
     };
     # snow
-    cducky = home-manager.lib.homeManagerConfiguration  {
+    glenda = home-manager.lib.homeManagerConfiguration  {
     inherit system pkgs;
-    username = "cducky";
-    homeDirectory = "/home/cducky";
+    username = "glenda";
+    homeDirectory = "/home/glenda";
     stateVersion = "22.05";
     configuration = {
     imports = [
-    ./users/cducky/home.nix
+    ./users/glenda/home.nix
     ];
     };
     };
