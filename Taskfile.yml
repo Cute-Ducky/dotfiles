@@ -53,7 +53,7 @@ tasks:
   apply-flash-os:
     cmds:
       - ./misc/root nixos-rebuild --flake .#flash-os -p flash-os switch
-  server:
+  apply-server:
     cmds:
       - ./misc/root nixos-rebuild --flake .#server -p server switch
 
@@ -93,10 +93,17 @@ tasks:
     cmds:
       - git pull
 
-  push:
+  test:
     cmds:
+      - task: apply-server
+      - task: apply-flash-os
+      - task: apply-snow
       - task: apply
       - task: check
+     
+  push:
+    cmds:
+      - task: test
       - git push
 
   jellyfin:
