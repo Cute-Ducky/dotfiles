@@ -55,7 +55,9 @@ tasks:
       - ./misc/root nixos-rebuild --flake .#flash-os -p flash-os switch
   apply-server:
     cmds:
+      - task: hostid
       - ./misc/root nixos-rebuild --flake .#server -p server switch
+      - task: rm-hostid
 
   apply-users:
     cmds:
