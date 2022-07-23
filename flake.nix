@@ -89,9 +89,17 @@ server = lib.nixosSystem {
   flash-os = lib.nixosSystem {
      inherit system;
      modules = [
-        ./system/flash-os/system.nix
-        ./system/ssh.nix
-
+      ./system/flash-os/system.nix
+      ./system/hardware-configuration.nix
+      ./system/boot.nix
+      ./system/configuration.nix
+      ./system/networking.nix
+      ./system/flash-os/xorg.nix
+      ./system/flash-os/packages.nix
+      ./system/zfs.nix
+      ./system/doas.nix
+      ./system/flash-os/steam.nix
+      ./system/ssh.nix
      ];
   };
 
