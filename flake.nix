@@ -108,18 +108,7 @@ server = lib.nixosSystem {
     ];
     };
     };
-    # snow
-    glenda = home-manager.lib.homeManagerConfiguration  {
-    inherit system pkgs;
-    username = "glenda";
-    homeDirectory = "/home/glenda";
-    stateVersion = "22.05";
-    configuration = {
-    imports = [
-    ./users/glenda/home.nix
-    ];
-    };
-    };
+    # snow 
     };
     nixosConfigurations.container = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
