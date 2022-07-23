@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+borgbackup
 cachix
 tabbed-siduck
 pavucontrol
