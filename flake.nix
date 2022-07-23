@@ -59,7 +59,7 @@ snow = lib.nixosSystem {
 ./system/doas.nix
 ./system/configuration.nix
 ./system/firewall.nix
-./system/snow/users.nix
+./system/users.nix
 ];
   };
 
