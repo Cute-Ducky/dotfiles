@@ -70,6 +70,7 @@ server = lib.nixosSystem {
      modules = [
 ./system/hardware-configuration.nix
 ./system/systemd-boot.nix
+./system/nextcloud.nix
 ./system/ssh.nix
 #./system/boot.nix
 ./system/networking.nix
