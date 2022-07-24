@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
 # make ready for flakes
   nix = {
