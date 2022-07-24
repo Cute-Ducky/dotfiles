@@ -27,7 +27,10 @@
      inherit system;
      modules = [
 #./system/system.nix
+
 #./lib/modules.nix
+./system/sound.nix
+./system/docker.nix
 ./system/flakes.nix
 ./system/libvirt.nix
 ./system/clamav.nix
@@ -53,6 +56,7 @@ snow = lib.nixosSystem {
      inherit system;
      modules = [
 #./system/system.nix
+./system/sound.nix
 ./system/flakes.nix
 ./system/hardware-configuration.nix
 ./system/boot.nix

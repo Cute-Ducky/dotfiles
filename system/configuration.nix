@@ -28,8 +28,8 @@ systemd.coredump.enable = false;
 
 # Set your time zone.
 time.timeZone = "Europe/Berlin";
-# docker
-virtualisation.docker.enable = true;
+
+
 
 # The global useDHCP flag is deprecated, therefore explicitly set to false here.
 # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -49,20 +49,15 @@ console = {
 
 # NUR
 
-nixpkgs.config.packageOverrides = pkgs: {
-  nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-    inherit pkgs;
-  };
-};
+#nixpkgs.config.packageOverrides = pkgs: {
+  #nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+    #inherit pkgs;
+  #};
+#};
 
 
 # Enable CUPS to print documents.
 # services.printing.enable = true;
-
-# Enable sound.
-sound.enable = true;
-nixpkgs.config.pulseaudio = true;
-hardware.pulseaudio.enable = true;
 
 # List packages installed in system profile. To search, run:
 # $ nix search wget
