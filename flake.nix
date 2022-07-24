@@ -85,6 +85,7 @@ server = lib.nixosSystem {
 #./system/xorg.nix
 #./system/packages.nix
 #./system/zfs.nix
+./system/users.nix
 ./system/doas.nix
 ./system/configuration.nix
 #./system/flash-os/steam.nix
@@ -106,6 +107,7 @@ server = lib.nixosSystem {
       ./system/flash-os/xorg.nix
       ./system/flash-os/packages.nix
       ./system/zfs.nix
+      ./system/users.nix
       ./system/doas.nix
       ./system/flash-os/steam.nix
       ./system/ssh.nix
