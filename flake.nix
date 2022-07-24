@@ -28,6 +28,8 @@
      modules = [
 #./system/system.nix
 #./lib/modules.nix
+./system/libvirt.nix
+./system/clamav.nix
 ./system/ssh.nix
 ./system/hardware-configuration.nix
 ./system/boot.nix

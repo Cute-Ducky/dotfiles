@@ -76,19 +76,11 @@ hardware.pulseaudio.enable = true;
 # $ nix search wget
 # packages
 
-environment = {
-   shellAliases = {
-   nixrebuild = "nixos-rebuild switch";
-   };
-   #variables = {
 
-   #};
-
-};
 # jellyfin
 # systemd.user.services.jellyfin.enable = false;
 # virt-manager
-virtualisation.libvirtd.enable = true;
+
 
 # started in user sessions.
 # programs.mtr.enable = true;
@@ -104,7 +96,7 @@ virtualisation.libvirtd.enable = true;
 #networking.firewall.allowedTCPPorts = [ 22  8096 ];
 #networking.firewall.allowedUDPPorts = [ ... ];
 # Or disable the firewall altogether.
-# networking.firewall.enable = false;
+
 programs = {
    dconf.enable = true;
    zsh = {
@@ -130,11 +122,6 @@ programs = {
    #};
    #};
 };
-# enable antivirus clamav and
-# keep the signatures' database updated
-services.clamav.daemon.enable = true;
-services.clamav.updater.enable = true;
-
 
 programs.kdeconnect.enable = true;
 system.stateVersion = "21.11";
