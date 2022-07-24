@@ -63,12 +63,6 @@ console = {
 # $ nix search wget
 # packages
 
-
-# jellyfin
-# systemd.user.services.jellyfin.enable = false;
-# virt-manager
-
-
 # started in user sessions.
 # programs.mtr.enable = true;
 # programs.gnupg.agent = {
@@ -110,6 +104,6 @@ programs = {
    #};
 };
 
-programs.kdeconnect.enable = true;
+#programs.kdeconnect.enable = true;
 system.stateVersion = "21.11";
 }
