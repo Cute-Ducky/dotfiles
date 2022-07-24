@@ -38,7 +38,7 @@
 ./system/doas.nix
 ./system/configuration.nix
 ./system/flash-os/steam.nix
-./system/jellyfin.nix
+#./system/jellyfin.nix
 ./system/firewall.nix
 ./system/tainscale.nix
 ./system/users.nix
