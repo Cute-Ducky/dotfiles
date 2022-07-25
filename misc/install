@@ -1,0 +1,16 @@
+#!/bin/sh
+choice="$(dialog --clear --backtitle 'Config selection' --title 'Config selection' --menu 'select the config you want to install' 15 40 4 1 'nixconf' 2 'snow' 3 'flash-os' 4 'server' 2>&1 >/dev/tty )"
+task cp-hardware
+case "$choice" in
+   1) echo 'CONF=nixconf' > misc/.env
+   ;;
+   2) echo 'CONF=snow' > misc/.env
+   ;;
+   3) echo 'CONF=flash-os' > misc/.env
+   ;;
+   4) echo 'CONF=server' > misc/.env
+   ;;
+   *) exit 0
+   ;;
+esac
+task apply

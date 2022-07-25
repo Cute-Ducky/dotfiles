@@ -23,7 +23,7 @@
      lib = nixpkgs.lib;
     in {
     nixosConfigurations = {
-  nixos = lib.nixosSystem {
+  nixconf = lib.nixosSystem {
      inherit system;
      modules = [
 #./system/system.nix

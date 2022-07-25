@@ -1,76 +1,31 @@
+---
 version: '3'
 
+dotenv: ['misc/.env']
+
 tasks:
-  new-system:
-    cmds:
-      - task: cp-hardware
-      - task: apply
-
   apply:
-    cmds:
+    cmds: 
       - task: hostid
-      - task: apply-system
-      - task: apply-users
+      - echo "applying $CONF ..."
+      - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF switch
       - task: rm-hostid
-  apply-system:
-    cmds:
-      - ./misc/root nixos-rebuild --flake .#nixos -p nixconf switch
-
-  # snow
-  apply-system-snow:
-    cmds:
-      - ./misc/root nixos-rebuild --flake .#snow -p snow switch
-
-  new-system-snow:
-    cmds:
-      - task: cp-hardware
-      - task: apply-snow
-
-  apply-snow:
-    cmds:
-      - task: hostid
-      - task: apply-system-snow
-      - task: apply-users-snow
-      - task: rm-hostid
-
-  apply-users-snow:
-    cmds:
-      - nix build .#homeManagerConfigurations.glenda.activationPackage
-      - ./result/activate
-
-  check:
-    cmds:
-      - nix flake check
 
   hostid:
     cmds:
       - sed -i "s/12355671/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
-  
+
   rm-hostid:
     cmds:
       - sed -i "s/$(head -c 8 /etc/machine-id)/12355671/g" system/configuration.nix
- 
-  apply-flash-os:
-    cmds:
-      - ./misc/root nixos-rebuild --flake .#flash-os -p flash-os switch
-  apply-server:
-    cmds:
-      - task: hostid
-      - ./misc/root nixos-rebuild --flake .#server -p server switch
-      - task: rm-hostid
-
-  apply-users:
-    cmds:
-      - nix build .#homeManagerConfigurations.glenda.activationPackage
-      - ./result/activate
-
-  auto-snapshot:
-    cmds:
-      - ./misc/root zfs set com.sun:auto-snapshot=true NIXROOT/home
 
   cp-hardware:
     cmds:
       - cp -f /etc/nixos/hardware-configuration.nix system
+
+  auto-snapshot:
+    cmds:
+      - ./misc/root zfs set com.sun:auto-snapshot=true NIXROOT/home
 
   update:
     cmds:
@@ -82,32 +37,12 @@ tasks:
       - git add flake.lock
       - git commit -m "update flake.lock"
 
-  iso:
-    cmds:
-      - nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=system/iso.nix
-
-  flash-os-iso:
-    cmds:
-      - nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=system/flash-os/iso.nix
-
-
-  pull:
-    cmds:
-      - git pull
-
   test:
     cmds:
-      - task: apply-flash-os
-      - task: apply-snow
       - task: apply
-      - task: check
-     
+      - nix flake check
+
   push:
     cmds:
       - task: test
-      - git push
 
-  jellyfin:
-    cmds:
-      - ./misc/root mkdir /jellyfin
-      - ./misc/root chown -R jellyfin:jellyfin /jellyfin

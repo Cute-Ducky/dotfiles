@@ -8,43 +8,15 @@
 ### ❄️ [nixos](https://nixos.org/)
 
 # Getting started:
-## Open a nix-shell
+## Open a nix-shell 
 ```sh
 nix-shell
 ```
-## Apply on a new system
-This is a alias to `cp-hardware` and `apply`.
-```sh
-task new-system
-```
-## snow-os
-```sh
-task new-system-snow
-```
-
 ## Usage
-
 ### Apply
 
 ```sh
 task apply
-```
-
-### Build iso
-```
-task iso
-```
-### Buid iso flash-os
-```
-task flash-os-iso
-```
-### Pull update from upstream
-```sh
-task pull
-```
-to pull and apply a update just simpily run:
-```sh
-task pull apply
 ```
 ## Configs
 
