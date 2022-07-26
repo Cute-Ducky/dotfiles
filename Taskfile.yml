@@ -46,3 +46,8 @@ tasks:
     cmds:
       - task: test
 
+
+  apply-user:
+    cmds:
+      - nix build .#homeManagerConfigurations.$USER.activationPackage
+      - ./result/activate
