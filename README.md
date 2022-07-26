@@ -8,10 +8,11 @@
 ### ❄️ [nixos](https://nixos.org/)
 
 # Getting started:
-## Open a nix-shell 
+## Open a nix-shell to start the interactive installer 
 ```sh
 nix-shell
 ```
+[demo](https://asciinema.org/a/511089)
 ## Usage
 ### Apply
 
