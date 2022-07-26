@@ -2,7 +2,7 @@
 choice="$(dialog --clear --backtitle 'Config selection' --title 'Config selection' --menu 'select the config you want to install' 15 40 4 1 'nixconf' 2 'snow' 3 'flash-os' 4 'server' 2>&1 >/dev/tty )"
 task cp-hardware
 case "$choice" in
-   1) echo 'CONF=nixconf' > misc/.env
+   1) echo 'CONF=nixconf' > misc/.env; cmd="task auto-snapshot"
    ;;
    2) echo 'CONF=snow' > misc/.env
    ;;
@@ -23,5 +23,6 @@ case "$choice" in
    *) echo 'USER=none' >> misc/.env
    ;;
 esac
+$cmd
 task apply
 
