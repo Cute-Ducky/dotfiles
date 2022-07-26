@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+asciinema
 gh
 borgbackup
 cachix
