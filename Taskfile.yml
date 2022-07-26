@@ -45,6 +45,7 @@ tasks:
   push:
     cmds:
       - task: test
+      - git push
 
 
   apply-user:
