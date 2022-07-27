@@ -104,6 +104,6 @@ programs = {
    #};
 };
 
-#programs.kdeconnect.enable = true;
+programs.kdeconnect.enable = true;
 system.stateVersion = "21.11";
 }
