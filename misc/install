@@ -16,13 +16,14 @@ esac
 choice="$(dialog --clear --backtitle 'User selection' --title 'User selection' --menu 'select the user you want to install' 15 40 4 1 'glenda' 2 'none' 2>&1 >/dev/tty )"
 task cp-hardware
 case "$choice" in
-   1) echo 'USER=glenda' >> misc/.env; task apply-user
+   1) echo 'USER=glenda' >> misc/.env; clear; task apply-user; clear=""
    ;;
-   2) echo 'USER=none' >> misc/.env
+   2) echo 'USER=none' >> misc/.env; clear="clear"
    ;;
-   *) echo 'USER=none' >> misc/.env
+   *) echo 'USER=none' >> misc/.env; clear="clear"
    ;;
 esac
+$clear
 $cmd
 task apply
 
