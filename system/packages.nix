@@ -62,6 +62,7 @@ docker docker-compose
 nerdfonts jetbrains-mono
 #busybox
 coreutils
+uutils-coreutils
 shadow
 bc
 picom

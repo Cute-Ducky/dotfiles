@@ -13,8 +13,7 @@
         rev = "4e50690";
         sha256="sha256-l63VtMqs/vu6zeoOFCVk1lOKb0zwl2PowU4Jm3Sj6Q4=";
       };
-
-               });
+      });
             #slock = prev.slock.overrideAttrs (old: {src = ./src/slock ;});
           })
       ];
