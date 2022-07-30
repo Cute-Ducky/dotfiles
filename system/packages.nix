@@ -3,6 +3,12 @@
 {
 
 environment.systemPackages = with pkgs; [
+# wayland
+wayland
+xwayland
+cage
+
+arandr
 asciinema
 gh
 borgbackup
