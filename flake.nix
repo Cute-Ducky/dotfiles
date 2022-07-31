@@ -27,9 +27,9 @@
      inherit system;
      modules = [
 #./system/system.nix
-
 #./lib/modules.nix
-./system/sound.nix
+#./system/sound.nix
+./system/wayland.nix
 ./system/docker.nix
 ./system/flakes.nix
 ./system/libvirt.nix
@@ -49,6 +49,34 @@
 ./system/tainscale.nix
 ./system/users.nix
 
+     ];
+  };
+  # like nixconf but boots into drawterm
+  plan9 = lib.nixosSystem {
+     inherit system;
+     modules = [
+#./system/system.nix
+#./lib/modules.nix
+#./system/sound.nix
+./system/wayland.nix
+./system/flakes.nix
+./system/libvirt.nix
+./system/clamav.nix
+./system/ssh.nix
+./system/hardware-configuration.nix
+./system/boot.nix
+./system/networking.nix
+./system/xorg.nix
+./system/packages.nix
+./system/zfs.nix
+./system/doas.nix
+./system/configuration.nix
+./system/flash-os/steam.nix
+#./system/jellyfin.nix
+./system/firewall.nix
+./system/tainscale.nix
+./system/users.nix
+./system/plan9.nix
      ];
   };
 # snow

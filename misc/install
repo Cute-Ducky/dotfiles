@@ -1,5 +1,5 @@
 #!/bin/sh
-choice="$(dialog --clear --backtitle 'Config selection' --title 'Config selection' --menu 'select the config you want to install' 15 40 4 1 'nixconf' 2 'snow' 3 'flash-os' 4 'server' 2>&1 >/dev/tty )"
+choice="$(dialog --clear --backtitle 'Config selection' --title 'Config selection' --menu 'select the config you want to install' 15 40 4 1 'nixconf' 2 'snow' 3 'flash-os' 4 'server' 5 'plan9' 2>&1 >/dev/tty )"
 task cp-hardware
 case "$choice" in
    1) echo 'CONF=nixconf' > misc/.env; cmd="task auto-snapshot"
@@ -9,6 +9,8 @@ case "$choice" in
    3) echo 'CONF=flash-os' > misc/.env
    ;;
    4) echo 'CONF=server' > misc/.env
+   ;;
+   5) echo 'CONF=plan9' > misc/.env
    ;;
    *) exit 0
    ;;
