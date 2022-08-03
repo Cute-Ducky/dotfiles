@@ -27,6 +27,7 @@ task apply
 | Snow   | More minimal version of nixconf        |
 | Flash-OS | More beginner friendly config with patheon desktop |
 | Server | Config build to be used on a server |
+| Plan9 | Boots into drawterm opened in cage as a wayland kiosk |
 ## Need a custome config?
 Contact me in a issue and we can discuss the details. Obviosly this service is free.
 ## Author
