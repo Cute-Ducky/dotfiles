@@ -41,7 +41,7 @@ imports = [
    ".bashrc".text = ''
    alias p9="~/9vm/drawterm -h 192.168.122.75 -a 192.168.122.75"
    '';
-
+   "9vm/drawterm.sh".source = ./drawterm.sh;
    ".config/nitrogen/nitrogen.cfg".text = ''
 [geometry]
 posx=30
