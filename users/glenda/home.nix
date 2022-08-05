@@ -62,7 +62,7 @@ file=/home/glenda/.dotfiles/wallpapers/lofi-4K.jpg
 mode=4
 bgcolor=#000000
    '';
-
+   ".screenlayout/layout.sh".source = ./.screenlayout/layout.sh
 
    };
 }
