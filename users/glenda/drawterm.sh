@@ -1,2 +1,4 @@
 #!/bin/sh
-~/9vm/drawterm -h 192.168.122.75 -a 192.168.122.75
+#st -e /home/glenda/9vm/9splash.sh
+sleep 60
+drawterm -h 192.168.122.75 -a 192.168.122.75
