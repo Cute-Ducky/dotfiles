@@ -11,6 +11,13 @@ tasks:
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF switch
       - task: rm-hostid
 
+  vm:
+    cmds: 
+      - task: hostid
+      - echo "building VM of $CONF ..."
+      - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF build-vm
+      - task: rm-hostid
+
   hostid:
     cmds:
       - sed -i "s/12355671/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
