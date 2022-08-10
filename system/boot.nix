@@ -11,7 +11,7 @@ boot = {
            #efiSysMountPoint = "/mnt/boot";
         };
         grub = {
-           enable = true;
+           enable = false;
            devices = [ "nodev" ];
            efiInstallAsRemovable = true;
            efiSupport = true;
@@ -21,11 +21,16 @@ boot = {
 	   copyKernels = true;
         };
 	systemd-boot = {
- 	   enable = false;
+ 	   enable = true;
+           configurationLimit = 10;
+           memtest86 = {
+            enable = true;
+           };
 	};
    };
    initrd = {
    	enable = true;
+        systemd.enable = true;
    };
    #plymouth = {
         #enable = true;
