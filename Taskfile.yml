@@ -8,7 +8,7 @@ tasks:
     cmds: 
       - task: hostid
       - echo "applying $CONF ..."
-      - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF switch
+      - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --install-bootloader switch
       - task: rm-hostid
 
   vm:
@@ -17,6 +17,10 @@ tasks:
       - echo "building VM of $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF build-vm
       - task: rm-hostid
+
+  rm:
+    cmds:
+      - ./misc/root nix-collect-garbage --delete-older-than 14d
 
   hostid:
     cmds:
