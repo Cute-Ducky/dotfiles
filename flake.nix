@@ -29,6 +29,7 @@
 #./system/system.nix
 #./lib/modules.nix
 #./system/sound.nix
+./system/hostname.nix
 ./system/wayland.nix
 ./system/docker.nix
 ./system/flakes.nix
@@ -59,6 +60,7 @@
 #./system/system.nix
 #./lib/modules.nix
 #./system/sound.nix
+./system/hostname.nix
 ./system/wayland.nix
 ./system/flakes.nix
 ./system/libvirt.nix
@@ -85,6 +87,7 @@ snow = lib.nixosSystem {
      inherit system;
      modules = [
 #./system/system.nix
+./system/hostname.nix
 ./system/sound.nix
 ./system/flakes.nix
 ./system/hardware-configuration.nix
@@ -132,6 +135,7 @@ server = lib.nixosSystem {
   flash-os = lib.nixosSystem {
      inherit system;
      modules = [
+      ./system/hostname.nix
       ./system/flash-os/system.nix
       ./system/hardware-configuration.nix
       ./system/boot.nix
