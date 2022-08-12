@@ -47,7 +47,7 @@
 #./system/jellyfin.nix
 ./system/firewall.nix
 ./system/tainscale.nix
-#./system/key.nix
+./system/key.nix
 ./system/users.nix
 
      ];

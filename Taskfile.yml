@@ -7,9 +7,11 @@ tasks:
   apply:
     cmds: 
       - task: hostid
+      - task: tailscale
       - echo "applying $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --install-bootloader switch
       - task: rm-hostid
+      - task: rm-tailscale
 
   vm:
     cmds: 
@@ -66,10 +68,11 @@ tasks:
 
   tailscale:
     cmds:
-      - sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
+      #- sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
       - sed -i "s/tskey-examplekeyhere/$(cat key)/g" system/key.nix 
 
 
   rm-tailscale:
     cmds:
       - sed -i "s/$(cat key)/tskey-examplekeyhere/g" system/key.nix 
+

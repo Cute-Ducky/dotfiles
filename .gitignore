@@ -3,7 +3,6 @@ iso/result
 .tmp
 system/hardware-configuration.nix
 core.*
-system/key.nix
 misc/.env
 key
 
