@@ -3,6 +3,8 @@
 {
 
 environment.systemPackages = with pkgs; [
+# Haxing
+nmap
 # wayland
 wayland
 xwayland
