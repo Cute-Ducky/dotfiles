@@ -76,3 +76,7 @@ tasks:
     cmds:
       - sed -i "s/$(cat key)/tskey-examplekeyhere/g" system/key.nix 
 
+  jellyfin:
+    cmds:
+      - ./misc/root mkdir /jellyfin
+      - ./misc/root chown -R jellyfin:jellyfin /jellyfin
