@@ -120,6 +120,7 @@ server = lib.nixosSystem {
 ./system/jellyfin.nix
 ./system/firewall.nix
 ./system/tainscale.nix
+./system/server/packages.nix
 
      ];
   };
