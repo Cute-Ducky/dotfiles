@@ -111,6 +111,7 @@ server = lib.nixosSystem {
      modules = [
 ./system/docker.nix
 ./system/server/hostname.nix
+
 ./system/nextcloud.nix
 ./system/hardware-configuration.nix
 ./system/systemd-boot.nix
@@ -122,7 +123,7 @@ server = lib.nixosSystem {
 #./system/packages.nix
 #./system/zfs.nix
 ./system/users.nix
-./system/doas.nix
+./system/server/doas.nix
 ./system/configuration.nix
 #./system/flash-os/steam.nix
 ./system/jellyfin.nix
@@ -131,6 +132,7 @@ server = lib.nixosSystem {
 ./system/key.nix
 ./system/flakes.nix
 ./system/server/packages.nix
+./system/minecraft.nix
 
      ];
   };
