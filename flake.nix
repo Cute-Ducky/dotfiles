@@ -30,6 +30,7 @@
 #./system/system.nix
 #./lib/modules.nix
 #./system/sound.nix
+#./system/arion.nix
 ./system/hostname.nix
 ./system/wayland.nix
 ./system/docker.nix

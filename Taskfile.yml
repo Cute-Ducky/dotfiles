@@ -80,3 +80,6 @@ tasks:
     cmds:
       - ./misc/root mkdir /jellyfin
       - ./misc/root chown -R jellyfin:jellyfin /jellyfin
+  server:
+    cmds:
+      - ssh glenda@100.72.219.114 "cd ~/.dotfiles;git pull; echo 'CONF=server' > misc/.env; task apply"
