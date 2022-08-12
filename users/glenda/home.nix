@@ -63,6 +63,8 @@ mode=4
 bgcolor=#000000
    '';
    ".screenlayout/layout.sh".source = ./layout.sh;
-
+ ".davfs2/secrets".source = ./secrets;
    };
+
+  
 }

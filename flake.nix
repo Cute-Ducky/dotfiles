@@ -26,6 +26,7 @@
   nixconf = lib.nixosSystem {
      inherit system;
      modules = [
+#./system/nextmount.nix
 #./system/system.nix
 #./lib/modules.nix
 #./system/sound.nix

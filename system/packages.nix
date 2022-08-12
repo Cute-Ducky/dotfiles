@@ -8,6 +8,7 @@ wayland
 xwayland
 cage
 
+davfs2
 nixos-generators
 arandr
 asciinema
