@@ -12,8 +12,8 @@ go-task
 vim neovim helix
 vscode
 neofetch pfetch
-google-chrome
-firefox 
+chromium
+librewolf
 rpi-imager
 cargo rustup rustc
 go
