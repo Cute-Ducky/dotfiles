@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
