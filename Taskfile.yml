@@ -63,3 +63,13 @@ tasks:
     cmds:
       - nix build .#homeManagerConfigurations.$USER.activationPackage
       - ./result/activate
+
+  tailscale:
+    cmds:
+      - sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
+      - sed -i "s/tskey-examplekeyhere/$(cat key)/g" system/key.nix 
+
+
+  rm-tailscale:
+    cmds:
+      - sed -i "s/$(cat key)/tskey-examplekeyhere/g" system/key.nix 
