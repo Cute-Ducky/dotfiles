@@ -8,6 +8,7 @@ wayland
 xwayland
 cage
 
+nixos-generators
 arandr
 asciinema
 gh
