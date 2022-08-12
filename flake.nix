@@ -109,6 +109,7 @@ snow = lib.nixosSystem {
 server = lib.nixosSystem {
      inherit system;
      modules = [
+./system/docker.nix
 ./system/server/hostname.nix
 ./system/nextcloud.nix
 ./system/hardware-configuration.nix
