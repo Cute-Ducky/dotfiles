@@ -1,0 +1,6 @@
+---
+version: '3'
+
+tasks:
+  network:
+    - docker network create -d bridge npm

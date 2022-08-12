@@ -3,6 +3,10 @@
 {
 
 environment.systemPackages = with pkgs; [
+python
+python3
+arion
+docker-client
 # Haxing
 nmap
 # wayland
