@@ -5,6 +5,7 @@ system/hardware-configuration.nix
 core.*
 system/key.nix
 misc/.env
+key
 
 install-demo.cast2
 install-demo.cast3
