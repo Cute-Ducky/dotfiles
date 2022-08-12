@@ -6,5 +6,6 @@ core.*
 misc/.env
 key
 
+arion/vw-data
 install-demo.cast2
 install-demo.cast3
