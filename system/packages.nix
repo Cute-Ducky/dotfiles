@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+sshfs
 python
 python3
 arion
