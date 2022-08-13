@@ -1,6 +1,7 @@
 #!/bin/sh
 . ~/.dotfiles/misc/.env # load the $CONF variable
-cmd="cat ~/.dotfiles/key" # command to get host-id
+user=$(whoami)
+cmd="cat /home/$user/.dotfiles/key" # command to get host-id
 ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
 if [ $CONF = "server" ]
 then

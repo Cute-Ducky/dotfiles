@@ -69,12 +69,12 @@ tasks:
   tailscale:
     cmds:
       #- sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
-      - sed -i "s/tskey-examplekeyhere/$(cat ~/.dotfiles/key)/g" system/key.nix 
+      - sed -i "s/tskey-examplekeyhere/$(./misc/get-key)/g" system/key.nix 
 
 
   rm-tailscale:
     cmds:
-      - sed -i "s/$(cat ~/.dotfiles/key)/tskey-examplekeyhere/g" system/key.nix 
+      - sed -i "s/$(./misc/get-key)/tskey-examplekeyhere/g" system/key.nix 
 
   jellyfin:
     cmds:
