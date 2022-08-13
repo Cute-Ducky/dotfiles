@@ -2,7 +2,7 @@
 . ~/.dotfiles/misc/.env # load the $CONF variable
 
 user=$(whoami)
-cmd="cat /home/$user/.dotfiles/key" # command to get host-id
+#cmd="cat /home/$user/.dotfiles/key" # command to get host-id
 ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
 if [ $CONF = "server" ]
 then
@@ -17,7 +17,7 @@ echo $key > server-key
 else
    if [ -e key ]
    then
-      key="$($cmd)" # run the command to get host-id locally
+      key="$(cat key)" # run the command to get host-id locally
    else
       key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
    fi
