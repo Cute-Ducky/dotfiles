@@ -34,7 +34,8 @@ tasks:
 
   cp-hardware:
     cmds:
-      - cp -f /etc/nixos/hardware-configuration.nix system
+      #- cp -f /etc/nixos/hardware-configuration.nix system
+      - ./misc/cp-hardware
 
   auto-snapshot:
     cmds:
