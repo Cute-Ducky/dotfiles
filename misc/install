@@ -1,4 +1,7 @@
 #!/bin/sh
+
+menu()
+{
 task rm-prepare
 choice="$(dialog --clear --backtitle 'Config selection' --title 'Config selection' --menu 'select the config you want to install' 15 40 4 1 'nixconf' 2 'snow' 3 'flash-os' 4 'server' 5 'plan9' 2>&1 >/dev/tty )"
 case "$choice" in
@@ -34,4 +37,17 @@ then
 else
    task apply
 fi
-
+}
+check_env_file()
+{
+   if [ -e misc/.env ]
+   then
+      echo "missing env file. create a env file by running nix-shell"
+   fi
+}
+case $1 in
+   "setconf") sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env;exit 0
+   ;;
+   *) menu
+   ;;
+esac

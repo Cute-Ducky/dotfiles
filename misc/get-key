@@ -13,6 +13,7 @@ then
    else
       key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
    fi
+echo $key > server-key
 else
    if [ -e key ]
    then
@@ -20,8 +21,8 @@ else
    else
       key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
    fi
-fi
 echo $key > key
+fi
 case $1 in
    "add") sed -i "s/tskey-examplekeyhere/$key/g" system/key.nix 
    ;;
