@@ -40,6 +40,7 @@ imports = [
    '';
    ".bashrc".text = ''
    alias p9="~/9vm/drawterm -h 192.168.122.75 -a 192.168.122.75"
+   eval "$(direnv hook bash)"
    '';
    "9vm/drawterm.sh".source = ./drawterm.sh;
    ".config/nitrogen/nitrogen.cfg".text = ''
@@ -63,8 +64,12 @@ mode=4
 bgcolor=#000000
    '';
    ".screenlayout/layout.sh".source = ./layout.sh;
- ".davfs2/secrets".source = ./secrets;
+
    };
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  programs.bash.enable = true;
 
   
 }
