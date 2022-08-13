@@ -27,13 +27,13 @@ task apply
 
 ## Configs
 
-| Name.    | Description                                           |
-| -------- | ----------------------------------------------------- |
-| Nixconf  | The standard config                                   |
-| Snow     | More minimal version of nixconf                       |
-| Flash-OS | More beginner friendly config with patheon desktop    |
-| Server   | Config build to be used on a server                   |
-| Plan9    | Boots into drawterm opened in cage as a wayland kiosk |
+| Name.                    | Description                                           |
+| ------------------------ | ----------------------------------------------------- |
+| Nixconf                  | The standard config                                   |
+| Snow                     | More minimal version of nixconf                       |
+| Flash-OS                 | More beginner friendly config with patheon desktop    |
+| [Server](docs/SERVER.md) | Config build to be used on a server                   |
+| Plan9                    | Boots into drawterm opened in cage as a wayland kiosk |
 
 ## Need a custome config?
 
