@@ -10,6 +10,7 @@ tasks:
       - echo "applying $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --install-bootloader switch
       - task: rm-prepare
+
   prepare:
     cmds:
       - task: cp-hardware
@@ -78,12 +79,12 @@ tasks:
   tailscale:
     cmds:
       #- sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
-      - sed -i "s/tskey-examplekeyhere/$(./misc/get-key)/g" system/key.nix 
+      - ./misc/get-key add
 
 
   rm-tailscale:
     cmds:
-      - sed -i "s/$(./misc/get-key)/tskey-examplekeyhere/g" system/key.nix 
+      - ./misc/get-key rm
 
   jellyfin:
     cmds:

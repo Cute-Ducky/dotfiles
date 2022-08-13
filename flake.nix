@@ -49,8 +49,8 @@
 ./system/flash-os/steam.nix
 #./system/jellyfin.nix
 ./system/firewall.nix
-./system/tainscale.nix
-./system/key.nix
+./system/tainscale.nix 
+./system/key.nix # tainscale
 ./system/users.nix
 
      ];

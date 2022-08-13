@@ -1,15 +1,32 @@
 #!/bin/sh
 . ~/.dotfiles/misc/.env # load the $CONF variable
+
 user=$(whoami)
 cmd="cat /home/$user/.dotfiles/key" # command to get host-id
 ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
 if [ $CONF = "server" ]
 then
-   ssh "$ip" "$cmd" # get host id over ssh (into server)
+   #ssh "$ip" "$cmd" # get host id over ssh (into server)
+   if [ -e server-key ]
+   then
+      key=$(cat server-key)
+   else
+      key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
+   fi
 else
    if [ -e key ]
    then
-      $cmd # run the command to get host-id locally
+      key="$($cmd)" # run the command to get host-id locally
+   else
+      key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
    fi
-   
 fi
+echo $key > key
+case $1 in
+   "add") sed -i "s/tskey-examplekeyhere/$key/g" system/key.nix 
+   ;;
+   "rm") sed -i "s/$key/tskey-examplekeyhere/g" system/key.nix 
+   ;;
+   *) exit 0
+   ;;
+esac
