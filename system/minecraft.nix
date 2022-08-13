@@ -9,7 +9,7 @@
     serverProperties = {
       server-port = 25565;
       gamemode = "survival";
-      motd = "NixOS Minecraft server on Tailscale!";
+      motd = "NixOS Minecraft server on Tailscale! deployed with nixops";
       max-players = 5;
       enable-rcon = true;
       # This password can be used to administer your minecraft server.
