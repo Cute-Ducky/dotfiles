@@ -11,6 +11,12 @@ tasks:
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --install-bootloader switch
       - task: rm-prepare
 
+  env:
+    cmds:
+      - echo "$CONF"
+      - echo "$USER"
+    silent: true
+
   prepare:
     cmds:
       - task: cp-hardware
