@@ -6,6 +6,7 @@ system/server/hardware-configuration.nix
 core.*
 misc/.env
 key
+server-key
 
 
 arion/vw-data
