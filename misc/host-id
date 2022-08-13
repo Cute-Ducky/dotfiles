@@ -1,2 +1,10 @@
 #!/bin/sh
-head -c 8 /etc/machine-id
+. ~/.dotfiles/misc/.env # load the $CONF variable
+cmd="head -c 8 /etc/machine-id" # command to get host-id
+ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
+if [ $CONF = "server" ]
+then
+   ssh "$ip" "$cmd" # get host id over ssh (into server)
+else
+   $cmd # run the command to get host-id locally
+fi
