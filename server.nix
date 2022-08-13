@@ -4,7 +4,7 @@
 ./system/docker.nix
 ./system/server/hostname.nix
 ./system/nextcloud.nix
-./system/hardware-configuration.nix
+./system/server/hardware-configuration.nix
 ./system/systemd-boot.nix
 ./system/nextcloud.nix
 ./system/ssh.nix

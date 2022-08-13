@@ -6,6 +6,8 @@ let
    git
    dialog
    openssh
+   nixopsUnstable
+   #nixops
    ];
 
 in

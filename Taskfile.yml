@@ -9,21 +9,24 @@ tasks:
       - task: prepare
       - echo "applying $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --install-bootloader switch
-      - task: rm-hostid
-      - task: rm-tailscale
-
+      - task: rm-prepare
   prepare:
     cmds:
       - task: cp-hardware
       - task: hostid
       - task: tailscale
  
+  rm-prepare:
+    cmds:
+      - task: rm-hostid
+      - task: rm-tailscale
+
   vm:
     cmds: 
       - task: prepare
       - echo "building VM of $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF build-vm
-      - task: rm-hostid
+      - task: rm-prepare
 
   rm:
     cmds:
@@ -86,6 +89,4 @@ tasks:
     cmds:
       - ./misc/root mkdir /jellyfin
       - ./misc/root chown -R jellyfin:jellyfin /jellyfin
-  server:
-    cmds:
-      - ssh glenda@100.72.219.114 "cd ~/.dotfiles;git pull; echo 'CONF=server' > misc/.env; task apply"
+
