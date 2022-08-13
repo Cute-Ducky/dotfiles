@@ -2,9 +2,11 @@ result
 iso/result
 .tmp
 system/hardware-configuration.nix
+system/server/hardware-configuration.nix
 core.*
 misc/.env
 key
+
 
 arion/vw-data
 install-demo.cast2
