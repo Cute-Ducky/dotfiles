@@ -1,0 +1,2 @@
+#!/bin/sh
+head -c 8 /etc/machine-id

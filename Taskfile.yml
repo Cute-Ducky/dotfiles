@@ -26,11 +26,11 @@ tasks:
 
   hostid:
     cmds:
-      - sed -i "s/12355671/$(head -c 8 /etc/machine-id)/g" system/configuration.nix
+      - sed -i "s/12355671/$(./misc/host-id)/g" system/configuration.nix
 
   rm-hostid:
     cmds:
-      - sed -i "s/$(head -c 8 /etc/machine-id)/12355671/g" system/configuration.nix
+      - sed -i "s/$(./misc/host-id)/12355671/g" system/configuration.nix
 
   cp-hardware:
     cmds:
@@ -69,12 +69,12 @@ tasks:
   tailscale:
     cmds:
       #- sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
-      - sed -i "s/tskey-examplekeyhere/$(cat key)/g" system/key.nix 
+      - sed -i "s/tskey-examplekeyhere/$(cat ~/.dotfiles/key)/g" system/key.nix 
 
 
   rm-tailscale:
     cmds:
-      - sed -i "s/$(cat key)/tskey-examplekeyhere/g" system/key.nix 
+      - sed -i "s/$(cat ~/.dotfiles/key)/tskey-examplekeyhere/g" system/key.nix 
 
   jellyfin:
     cmds:
