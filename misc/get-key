@@ -7,5 +7,9 @@ if [ $CONF = "server" ]
 then
    ssh "$ip" "$cmd" # get host id over ssh (into server)
 else
-   $cmd # run the command to get host-id locally
+   if [ -e key ]
+   then
+      $cmd # run the command to get host-id locally
+   fi
+   
 fi
