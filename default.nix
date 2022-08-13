@@ -5,6 +5,7 @@ let
    go-task
    git
    dialog
+   openssh
    ];
 
 in
