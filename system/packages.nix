@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+marktext
 direnv
 nixopsUnstable
 sshfs
