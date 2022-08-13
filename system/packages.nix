@@ -3,6 +3,8 @@
 {
 
 environment.systemPackages = with pkgs; [
+direnv
+nixopsUnstable
 sshfs
 python
 python3
