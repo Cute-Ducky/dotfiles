@@ -6,16 +6,21 @@ dotenv: ['misc/.env']
 tasks:
   apply:
     cmds: 
-      - task: hostid
-      - task: tailscale
+      - task: prepare
       - echo "applying $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --install-bootloader switch
       - task: rm-hostid
       - task: rm-tailscale
 
+  prepare:
+    cmds:
+      - task: cp-hardware
+      - task: hostid
+      - task: tailscale
+ 
   vm:
     cmds: 
-      - task: hostid
+      - task: prepare
       - echo "building VM of $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF build-vm
       - task: rm-hostid
