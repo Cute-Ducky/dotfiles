@@ -7,6 +7,7 @@ let
    dialog
    openssh
    nixopsUnstable
+   tailscale
    #nixops
    ];
 

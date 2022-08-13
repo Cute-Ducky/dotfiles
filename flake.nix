@@ -162,6 +162,7 @@ devShells.x86_64-linux.default = pkgs.mkShell {
             dialog
             openssh
             nixopsUnstable
+            tainscale
           ];
           shellHook = ''
           echo "Welcome to my dotfiles" 
