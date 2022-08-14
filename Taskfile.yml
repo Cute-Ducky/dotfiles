@@ -97,3 +97,8 @@ tasks:
       - ./misc/root mkdir /jellyfin
       - ./misc/root chown -R jellyfin:jellyfin /jellyfin
 
+  pudate:
+    cmds:
+      - git pull
+      - task: apply
+      - task: apply-user
