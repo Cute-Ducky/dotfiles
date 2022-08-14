@@ -8,6 +8,7 @@ misc/.env
 key
 server-key
 target
+!rust/welcome/target/release/welcome
 
 
 arion/vw-data
