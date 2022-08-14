@@ -37,6 +37,8 @@ imports = [
   };
    home.file = {
    ".config/alacritty/alacritty.yml".text = ''
+   save_to_clipboard: true
+   window_opacity: 0.1
    '';
    ".bashrc".text = ''
    alias p9="~/9vm/drawterm -h 192.168.122.75 -a 192.168.122.75"
@@ -65,6 +67,7 @@ bgcolor=#000000
    '';
    ".screenlayout/layout.sh".source = ./layout.sh;
    ".xinitrc".source = ./xinitrc;
+   ".config/hypr".source = ./hypr;
 
    };
   programs.direnv.enable = true;
@@ -73,4 +76,5 @@ bgcolor=#000000
   programs.bash.enable = true;
 
   
+
 }
