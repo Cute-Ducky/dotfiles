@@ -16,6 +16,7 @@ docker-client
 # Haxing
 nmap
 # wayland
+grim
 wayland
 xwayland
 cage
@@ -25,6 +26,7 @@ wofi
 rofi-wayland
 swaybg
 
+slop
 davfs2
 nixos-generators
 arandr
