@@ -64,6 +64,7 @@ mode=4
 bgcolor=#000000
    '';
    ".screenlayout/layout.sh".source = ./layout.sh;
+   ".xinitrc".source = ./xinitrc;
 
    };
   programs.direnv.enable = true;
