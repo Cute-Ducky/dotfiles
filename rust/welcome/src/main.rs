@@ -9,7 +9,7 @@ use std::rc::Rc;
 
 fn main() {
     let application = gtk4::Application::builder()
-        .application_id("com.github.gtk-rs.examples.dialog")
+        .application_id("Welcome")
         .build();
 
     application.connect_activate(build_ui);

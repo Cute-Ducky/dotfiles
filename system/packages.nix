@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+gtk4
 zip
 unzip
 marktext
