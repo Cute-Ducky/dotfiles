@@ -352,6 +352,7 @@ static const char *const autostart[] = {
 	"xautolock","-time","1","-locker","xlock -startcmd 'xset dpms force suspend'", NULL,
 	"picom", NULL,
 	"sh","-c","$HOME/.dotfiles/system/src/dwm/bar.sh",NULL,
+        "sh","-c","$HOME/.dotfiles/rust/welcome/welcome",NULL,
 	NULL /* terminate */
 };
 #endif // COOL_AUTOSTART_PATCH
