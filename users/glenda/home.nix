@@ -36,10 +36,15 @@ imports = [
   #init = { defaultBranch = "main"; } ;  
   };
    home.file = {
+   ".config/alacritty/wayland.yml".text = ''
+save_to_clipboard: true
+window:
+   opacity: 0.89
+   '';
    ".config/alacritty/alacritty.yml".text = ''
 save_to_clipboard: true
 window:
-   opacity: 0.8
+   opacity: 1.0
    '';
    ".bashrc".text = ''
    alias p9="~/9vm/drawterm -h 192.168.122.75 -a 192.168.122.75"
@@ -63,7 +68,7 @@ dirs=/home/glenda/.dotfiles/wallpapers;
    '';
    ".config/nitrogen/bg-saved.cfg".text = ''
 [xin_-1]
-file=/home/glenda/.dotfiles/wallpapers/lofi-4K.jpg
+file=/home/glenda/.dotfiles/wallpapers/lemmekissu.png
 mode=4
 bgcolor=#000000
    '';
