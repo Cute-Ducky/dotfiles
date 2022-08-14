@@ -16,7 +16,7 @@ networking.hostId = "12355671";
 
 hardware.enableAllFirmware = true;
 nixpkgs.config.allowUnfree = true;
-hardware.bluetooth.enable = false;
+hardware.bluetooth.enable = true;
 
 # disable coredump that could be exploited later
 # and also slow down the system when something crash
