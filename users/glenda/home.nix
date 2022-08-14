@@ -45,6 +45,7 @@ imports = [
    eval "$(direnv hook bash)"
    '';
    "9vm/drawterm.sh".source = ./drawterm.sh;
+   ".config/nitrogen/nitrogen.cfg".recursive = true;
    ".config/nitrogen/nitrogen.cfg".text = ''
 [geometry]
 posx=30
