@@ -37,8 +37,9 @@ imports = [
   };
    home.file = {
    ".config/alacritty/alacritty.yml".text = ''
-   save_to_clipboard: true
-   window_opacity: 0.1
+save_to_clipboard: true
+window:
+   opacity: 0.8
    '';
    ".bashrc".text = ''
    alias p9="~/9vm/drawterm -h 192.168.122.75 -a 192.168.122.75"
