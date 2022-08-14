@@ -3,6 +3,8 @@
 {
 
 environment.systemPackages = with pkgs; [
+zip
+unzip
 marktext
 direnv
 nixopsUnstable
@@ -17,6 +19,11 @@ nmap
 wayland
 xwayland
 cage
+hyprland 
+waybar
+wofi
+rofi-wayland
+swaybg
 
 davfs2
 nixos-generators
