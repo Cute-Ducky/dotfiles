@@ -8,6 +8,10 @@ zip
 unzip
 marktext
 direnv
+# tty 
+fbterm
+fbida
+kmscon
 nixopsUnstable
 sshfs
 python
@@ -21,7 +25,7 @@ grim
 wayland
 xwayland
 cage
-hyprland 
+hyprland
 waybar
 wofi
 rofi-wayland
