@@ -9,6 +9,7 @@ key
 server-key
 target
 !rust/welcome/target/release/welcome
+misc/nixops
 
 
 arion/vw-data
