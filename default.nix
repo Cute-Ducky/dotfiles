@@ -6,9 +6,9 @@ let
    git
    dialog
    openssh
-   nixopsUnstable
+   nixops
    tailscale
-   #nixops
+   nixops
    ];
 
 in

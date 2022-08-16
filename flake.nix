@@ -17,7 +17,8 @@
 
      pkgs = import nixpkgs {
         inherit system;
-  config = { allowUnfree = true; };
+  config = { allowUnfree = true;
+            allowInsecure = true;};
      };
 
      lib = nixpkgs.lib;
@@ -162,7 +163,7 @@ devShells.x86_64-linux.default = pkgs.mkShell {
             git
             dialog
             openssh
-            nixopsUnstable
+            nixops
             tailscale
           ];
           shellHook = ''
