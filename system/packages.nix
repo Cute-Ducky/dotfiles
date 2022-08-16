@@ -12,7 +12,7 @@ direnv
 fbterm
 fbida
 kmscon
-nixopsUnstable
+#nixops
 sshfs
 python
 python3
