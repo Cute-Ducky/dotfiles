@@ -1,4 +1,4 @@
-{ pkgs,config, ... }:
+{ options,pkgs,config, ... }:
 {
    config = {
       services.gpm = {
