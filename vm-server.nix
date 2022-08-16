@@ -16,6 +16,7 @@
       ./system/key.nix
       ./system/flakes.nix
       ./system/server/packages.nix
+      ./system/libvirt.nix
    ];
 
    networking.hostName = "vm-server";
