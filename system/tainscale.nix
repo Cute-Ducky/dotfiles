@@ -12,6 +12,7 @@ networking.firewall = {
 
     # allow the Tailscale UDP port through the firewall
     allowedUDPPorts = [ config.services.tailscale.port ];
+    interfaces."tailscale0".allowedTCPPorts = [ 80 8080 ];
 
    
    checkReversePath = "loose";

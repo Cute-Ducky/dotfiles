@@ -55,7 +55,7 @@ diskonaut duf
 sxiv
 act
 emacs
-fluffychat element-desktop
+element-desktop
 thunderbird mailspring
 rpi-imager
 gotop
