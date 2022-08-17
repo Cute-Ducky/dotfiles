@@ -165,6 +165,7 @@ devShells.x86_64-linux.default = pkgs.mkShell {
             openssh
             nixops
             tailscale
+            gnum4
           ];
           shellHook = ''
           echo "Welcome to my dotfiles" 

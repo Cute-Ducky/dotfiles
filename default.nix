@@ -9,6 +9,7 @@ let
    nixops
    tailscale
    nixops
+   gnum4
    ];
 
 in
