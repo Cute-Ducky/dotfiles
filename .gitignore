@@ -17,3 +17,6 @@ install-demo.cast2
 install-demo.cast3
 
 
+# m4
+system/key.nix
+systme/nextcloud.nix

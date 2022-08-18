@@ -1,1 +1,11 @@
 #!/bin/sh
+. ./misc/.env
+replace_system_file(){
+   m4 -D$1="$2" system/$3.nix.template > system/$3.nix
+}
+
+#m4 -Dnextcloud_password="$nextcloud_password" system/nextcloud.nix.template hello #> system/nextcloud.nix
+
+replace_system_file nextcloud_password password1234 nextcloud
+
+

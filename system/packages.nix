@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+oed
 gnum4
 gtk4
 zip

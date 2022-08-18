@@ -17,7 +17,8 @@ in
     name = "env";
     buildInputs = pkgs;
     shellHook = ''
-   ./misc/install
+   #./misc/install
+   ./misc/m4
   '';
 
   }
