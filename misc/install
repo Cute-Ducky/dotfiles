@@ -1,7 +1,11 @@
 #!/bin/sh
-
+. misc/m4
+replace_system_file(){
+   m4 -D$1="$2" system/$3.nix.template > system/$3.nix
+}
 create_nixops(){ 
    sed -i "s/<tailscale ip>/$(tailscale ip -4 server)/g" config-nixops.nix # replace with m4
+
    if [ -e misc/nixops ]
    then
       if dialog --stdout --title "Deployment already exists" \
