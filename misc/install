@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 create_nixops(){ 
    sed -i "s/<tailscale ip>/$(tailscale ip -4 server)/g" config-nixops.nix # replace with m4
    if [ -e misc/nixops ]
