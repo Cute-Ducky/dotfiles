@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+oed
 gtk4
 zip
 unzip
