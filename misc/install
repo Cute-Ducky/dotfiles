@@ -1,10 +1,12 @@
 #!/bin/sh
 . misc/m4
 replace_system_file(){
+   # Usage
+   # replace_system_file <to_replace> <replace_with> <filename>
    m4 -D$1="$2" system/$3.nix.template > system/$3.nix
 }
 create_nixops(){ 
-   sed -i "s/<tailscale ip>/$(tailscale ip -4 server)/g" config-nixops.nix # replace with m4
+   replace_system_file tailscale_ip $(tailscale ip -4 server) config-nixops
 
    if [ -e misc/nixops ]
    then
@@ -13,13 +15,16 @@ create_nixops(){
          --yesno "Do you want to delete the old deployment and recreate it?" 7 60
       then 
          nixops delete --force -d $(cat misc/nixops)
+         printf "$(nixops create system/config-nixops.nix -d server)" > misc/nixops
       else
-         printf "created new deployment"
+         printf "no deployment created"
       fi
    else
-      printf "$(nixops create config-nixops.nix -d server)" > misc/nixops
+      printf "created new deployment"
+      printf "$(nixops create system/config-nixops.nix -d server)" > misc/nixops
    fi
 }
+
 check_env_file()
 {
    if [ -e misc/.env ]
@@ -73,7 +78,7 @@ setup-nixops    setup the nixops deployment"
 case $1 in
    "setconf") sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env;exit 0
    ;;
-   "setup-nixops") create_nixops
+   "create-nixops") create_nixops
    ;;
    "help") printf "$help"
    ;;
