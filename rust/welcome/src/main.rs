@@ -15,6 +15,7 @@ fn main() {
         //let orientable = CustomOrientable::new();
         let update_button = gtk4::Button::with_label("Update");
         let quit_button = gtk4::Button::with_label("Quit");
+        let label = gtk4::Label::new(Some("Welcome"));
 
         update_button.connect_clicked(clone!(@strong window =>
             move |_| {
@@ -28,8 +29,9 @@ fn main() {
         ));
      
         //orientable.set_halign(gtk4::Align::Center);
-        bx.append(&quit_button);
+        bx.append(&label);
         bx.append(&update_button);
+        bx.append(&quit_button); 
         bx.set_margin_top(18);
         bx.set_margin_bottom(18);
         bx.set_margin_start(18);
