@@ -3,6 +3,10 @@
 {
 
 environment.systemPackages = with pkgs; [
+glibc
+pango
+graphene 
+gdk-pixbuf-xlib
 oed
 gnum4
 gtk4
