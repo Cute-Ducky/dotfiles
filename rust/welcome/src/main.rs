@@ -1,9 +1,9 @@
 use gtk4::prelude::*;
 use gtk4::glib::clone;
 use std::process::Command;
+use std::process::exit;
 
 fn main() {
-    update();
     let application = gtk4::Application::new(
         //Some("com.github.9glenda.dotfiles.welcome"),
         Some("com.github.gtk-rs.examples.orientable_subclass"),
@@ -14,21 +14,21 @@ fn main() {
         let bx = gtk4::Box::new(gtk4::Orientation::Vertical, 6);
         //let orientable = CustomOrientable::new();
         let update_button = gtk4::Button::with_label("Update");
-        let button2 = gtk4::Button::with_label("Test");
+        let quit_button = gtk4::Button::with_label("Quit");
 
         update_button.connect_clicked(clone!(@strong window =>
             move |_| {
                 update();
             }
         ));
-        button2.connect_clicked(clone!(@strong window =>
+        quit_button.connect_clicked(clone!(@strong window =>
             move |_| {
-                println!("Test"); 
+                exit(0);
             }
         ));
      
         //orientable.set_halign(gtk4::Align::Center);
-        bx.append(&button2);
+        bx.append(&quit_button);
         bx.append(&update_button);
         bx.set_margin_top(18);
         bx.set_margin_bottom(18);
