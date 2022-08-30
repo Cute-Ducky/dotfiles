@@ -22,3 +22,5 @@ install-demo.cast3
 system/key.nix
 system/nextcloud.nix
 system/config-nixops.nix
+
+.direnv

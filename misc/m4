@@ -1,9 +1,8 @@
 #!/bin/sh
 . ./misc/.env
 replace_system_file(){
-   m4 -D$1="$2" system/$3.nix.template > system/$3.nix
+   # Usage
+   # replace_system_file <to_replace> <replace_with> <filename>
+   m4 -G -D$1="$2" system/$3.nix.template > system/$3.nix
 }
-
-replace_system_file nextcloud_password $nextcloud_password nextcloud
-replace_system_file tskey-examplekeyhere $tailscale_key1 key
-
+export -f replace_system_file

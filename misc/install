@@ -1,10 +1,6 @@
 #!/bin/sh
 . misc/m4
-replace_system_file(){
-   # Usage
-   # replace_system_file <to_replace> <replace_with> <filename>
-   m4 -D$1="$2" system/$3.nix.template > system/$3.nix
-}
+
 create_nixops(){ 
    replace_system_file tailscale_ip $(tailscale ip -4 server) config-nixops
 

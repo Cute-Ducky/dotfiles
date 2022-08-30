@@ -26,7 +26,6 @@ tasks:
   rm-prepare:
     cmds:
       - task: rm-hostid
-      - task: rm-tailscale
 
   vm:
     cmds: 
@@ -41,15 +40,10 @@ tasks:
 
   hostid:
     cmds:
-      - sed -i "s/12355671/$(./misc/host-id)/g" system/configuration.nix
-
-  rm-hostid:
-    cmds:
-      - sed -i "s/$(./misc/host-id)/12355671/g" system/configuration.nix
+      - ./misc/host-id
 
   cp-hardware:
     cmds:
-      #- cp -f /etc/nixos/hardware-configuration.nix system
       - ./misc/cp-hardware
 
   auto-snapshot:
@@ -86,11 +80,6 @@ tasks:
     cmds:
       #- sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
       - ./misc/get-key add
-
-
-  rm-tailscale:
-    cmds:
-      - ./misc/get-key rm
 
   jellyfin:
     cmds:
