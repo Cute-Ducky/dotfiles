@@ -12,7 +12,7 @@ imports =
 ];
 
 
-networking.hostId = "5ff65061";
+networking.hostId = "host_id";
 
 hardware.enableAllFirmware = true;
 nixpkgs.config.allowUnfree = true;
@@ -28,8 +28,6 @@ systemd.coredump.enable = false;
 
 # Set your time zone.
 time.timeZone = "Europe/Berlin";
-
-
 
 # The global useDHCP flag is deprecated, therefore explicitly set to false here.
 # Per-interface useDHCP will be mandatory in the future, so this generated config
