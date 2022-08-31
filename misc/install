@@ -79,7 +79,7 @@ case $1 in
    ;;
    "deploy-nixops") nixops deploy -d $(cat misc/nixops)
    ;;
-   "nextcloud") replace_system_file nextcloud_password $(cat nextcloud) nextcloud host_name $(tailscale ip -4 server)
+   "nextcloud") replace_system_file nextcloud_password $(cat nextcloud) nextcloud
    ;;
    "help") printf "$help"
    ;;
