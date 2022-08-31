@@ -95,4 +95,5 @@ tasks:
       - task: apply-user
   refind:
     cmds:
+      - echo "run this in a nix-shell"
       - ./misc/root refind-install
