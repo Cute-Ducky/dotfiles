@@ -70,11 +70,15 @@ esac
 fi
 }
 help="setconf         set the config
-setup-nixops    setup the nixops deployment"
+create-nixops    setup the nixops deployment"
 case $1 in
    "setconf") sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env;exit 0
    ;;
    "create-nixops") create_nixops
+   ;;
+   "deploy-nixops") nixops deploy -d $(cat misc/nixops)
+   ;;
+   "nextcloud") replace_system_file nextcloud_password $(cat nextcloud) nextcloud
    ;;
    "help") printf "$help"
    ;;

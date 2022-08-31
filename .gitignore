@@ -7,6 +7,7 @@ core.*
 misc/.env
 key
 server-key
+nextcloud
 target
 !rust/welcome/target/release/welcome
 misc/nixops
@@ -22,5 +23,6 @@ install-demo.cast3
 system/key.nix
 system/nextcloud.nix
 system/config-nixops.nix
+
 
 .direnv

@@ -19,6 +19,7 @@ tasks:
 
   prepare:
     cmds:
+      - ./misc/install nextcloud
       - task: cp-hardware
       - task: hostid
       - task: tailscale
