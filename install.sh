@@ -49,17 +49,17 @@ nixos-generate-config --root /mnt
 
 echo "# Add this to your nix config 
   #ZFS
-  networking.hostId = "$(head -c 8 /etc/machine-id)";
+  networking.hostId = \"$(head -c 8 /etc/machine-id)\";
 
 
   boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.devices = [ \"nodev\" ];
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = [ \"zfs\" ];
   boot.zfs.requestEncryptionCredentials = true;
   
   # Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ \"nix-command\" \"flakes\" ];
 "
