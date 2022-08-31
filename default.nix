@@ -10,6 +10,7 @@ let
    nixopsUnstable
    gnum4
    refind
+   efibootmgr
    ];
 
 in

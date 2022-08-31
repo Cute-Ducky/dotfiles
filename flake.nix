@@ -178,6 +178,7 @@ devShells.x86_64-linux.default = pkgs.mkShell {
             tailscale
             gnum4
             refind
+            efibootmgr
           ];
           shellHook = ''
           echo "Welcome to my dotfiles" 

@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+efibootmgr
 refind
 wpa_supplicant_gui
 glibc
