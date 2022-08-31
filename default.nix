@@ -6,9 +6,8 @@ let
    git
    dialog
    openssh
-   nixops
    tailscale
-   nixops
+   nixopsUnstable
    gnum4
    ];
 
@@ -18,7 +17,7 @@ in
     buildInputs = pkgs;
     shellHook = ''
    #./misc/install
-   ./misc/m4
+   #./misc/m4
   '';
 
   }

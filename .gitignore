@@ -22,6 +22,7 @@ install-demo.cast3
 # m4
 system/key.nix
 system/nextcloud.nix
+system/configuration.nix
 system/config-nixops.nix
 
 

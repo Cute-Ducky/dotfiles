@@ -157,13 +157,24 @@ server = lib.nixosSystem {
   ./system/container.nix
         ];
     };
+
+   #defaultPackage = pkgs.hello;
+   nixopsConfigurations.default = {
+      inherit nixpkgs;
+      network.storage.legacy = {
+         databasefile = "~/.nixops/deployments.nixops";
+      };
+      network.description = "server"; 
+          webserver = import ./server.nix;
+      };
+
 devShells.x86_64-linux.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             go-task
             git
             dialog
             openssh
-            #nixops
+            nixopsUnstable
             tailscale
             gnum4
           ];
