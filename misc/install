@@ -1,4 +1,5 @@
 #!/bin/sh
+touch misc/.env
 . misc/m4
 
 create_nixops(){ 
