@@ -1,0 +1,5 @@
+#!/bin/sh
+git add -f system/key.nix
+git add -f system/nextcloud.nix
+git add -f system/configuration.nix
+git add -f system/config-nixops.nix

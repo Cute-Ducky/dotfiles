@@ -23,10 +23,11 @@ tasks:
       - task: cp-hardware
       - task: hostid
       - task: tailscale
+      - ./misc/add
  
   rm-prepare:
     cmds:
-      - task: rm-hostid
+      - ./misc/remove
 
   vm:
     cmds: 
