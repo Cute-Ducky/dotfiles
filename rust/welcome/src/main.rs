@@ -12,14 +12,21 @@ fn main() {
     application.connect_activate(|app| {
         let window = gtk4::ApplicationWindow::new(app);
         let bx = gtk4::Box::new(gtk4::Orientation::Vertical, 6);
-        //let orientable = CustomOrientable::new();
         let update_button = gtk4::Button::with_label("Update");
+        let wifi_button = gtk4::Button::with_label("Connect to Wifi");
         let quit_button = gtk4::Button::with_label("Quit");
         let label = gtk4::Label::new(Some("Welcome"));
 
         update_button.connect_clicked(clone!(@strong window =>
             move |_| {
                 update();
+            }
+        ));
+        wifi_button.connect_clicked(clone!(@strong window =>
+            move |_| {
+                Command::new("wpa_gui") 
+                .output()
+                .expect("failed to execute process");
             }
         ));
         quit_button.connect_clicked(clone!(@strong window =>
@@ -31,6 +38,7 @@ fn main() {
         //orientable.set_halign(gtk4::Align::Center);
         bx.append(&label);
         bx.append(&update_button);
+        bx.append(&wifi_button);
         bx.append(&quit_button); 
         bx.set_margin_top(18);
         bx.set_margin_bottom(18);
