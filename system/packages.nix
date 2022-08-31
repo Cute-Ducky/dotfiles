@@ -9,6 +9,7 @@ graphene
 gdk-pixbuf-xlib
 oed
 gnum4
+oed
 gtk4
 zip
 unzip
