@@ -12,7 +12,7 @@ root+="2"
 
 echo "create a boot named: $boot"
 echo "create a root named: $root"
-gdisk "/dev/$disk"
+gdisk "$disk"
 
 mkfs.vfat -F 32 $boot
 fatlabel $boot NIXBOOT
