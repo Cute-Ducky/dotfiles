@@ -9,6 +9,7 @@ let
    tailscale
    nixopsUnstable
    gnum4
+   refind
    ];
 
 in

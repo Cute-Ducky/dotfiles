@@ -93,3 +93,6 @@ tasks:
       - git pull
       - task: apply
       - task: apply-user
+  refind:
+    cmds:
+      - ./misc/root refind-install

@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+refind
 wpa_supplicant_gui
 glibc
 pango

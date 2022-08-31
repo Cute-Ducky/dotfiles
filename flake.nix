@@ -177,6 +177,7 @@ devShells.x86_64-linux.default = pkgs.mkShell {
             nixopsUnstable
             tailscale
             gnum4
+            refind
           ];
           shellHook = ''
           echo "Welcome to my dotfiles" 
