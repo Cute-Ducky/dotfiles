@@ -163,15 +163,13 @@ devShells.x86_64-linux.default = pkgs.mkShell {
             git
             dialog
             openssh
-            nixops
+            #nixops
             tailscale
             gnum4
           ];
           shellHook = ''
           echo "Welcome to my dotfiles" 
           '';
-        };
-
-  };
-
+      };
+   };
 }
