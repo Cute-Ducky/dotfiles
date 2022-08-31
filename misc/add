@@ -1,5 +1,9 @@
 #!/bin/sh
-git add -f system/key.nix
-git add -f system/nextcloud.nix
-git add -f system/configuration.nix
-git add -f system/config-nixops.nix
+add() {
+   touch $1
+   git add -f $1
+}
+add system/key.nix
+add system/nextcloud.nix
+add system/configuration.nix
+add system/config-nixops.nix
