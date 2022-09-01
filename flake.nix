@@ -27,6 +27,14 @@
   nixconf = lib.nixosSystem {
      inherit system;
      modules = [
+# paranoid nix
+./system/noexec.nix
+./system/no-defaults.nix
+./system/audit.nix
+
+# tmp user
+./system/tmp-user.nix
+
 #./system/nextmount.nix
 #./system/system.nix
 #./lib/modules.nix

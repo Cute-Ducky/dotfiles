@@ -39,6 +39,8 @@ task apply
 
 Contact me in a issue and we can discuss the details. Obviosly this service is free.
 
+## Thanks
+[paranoid nix](https://xeiaso.net/blog/paranoid-nixos-2021-07-18)
 ## Author
 
 👤 **9glenda**

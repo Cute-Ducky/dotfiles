@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+signal-desktop
 clamav
 efibootmgr
 refind
