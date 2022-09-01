@@ -24,6 +24,7 @@ system/key.nix
 system/nextcloud.nix
 system/configuration.nix
 system/config-nixops.nix
+system/hardware-configuration.nix
 
 
 .direnv

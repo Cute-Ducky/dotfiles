@@ -7,3 +7,4 @@ add system/key.nix
 add system/nextcloud.nix
 add system/configuration.nix
 add system/config-nixops.nix
+add system/hardware-configuration.nix

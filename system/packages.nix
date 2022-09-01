@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+clamav
 efibootmgr
 refind
 wpa_supplicant_gui
