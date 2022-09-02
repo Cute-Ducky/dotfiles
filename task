@@ -8,7 +8,7 @@ system/configuration.nix
 system/config-nixops.nix
 system/hardware-configuration.nix"
 
-log_level=2
+log_level=1
 log() {
    # Usage: log message log_level
    # Example: log "hello" 1
@@ -38,6 +38,25 @@ root() {
    fi
 }
 
+# checks
+check_secrets_folder() {
+   if [ -d secrets ]
+   then
+      :
+   else
+      mkdir secrets
+   fi
+}
+
+check_env() {
+   if [ -s misc/.env ]
+   then
+      . misc/.env
+   else
+      fatal "no .env file"
+   fi
+}
+
 # Tasks:
 remove_from_git() {
    log "remove_from_git" 1
@@ -58,26 +77,91 @@ add_to_git() {
    trap remove_from_git EXIT # execute remove from git before exiting the script
 }
 
+nextcloud() {
+   log "nextcloud" 1
+   check_secrets_folder # create secrets folder if it's not existing
+   if [ -s secrets/nextcloud_password ] 
+   then
+      m4 -Dnextcloud_password="$(cat secrets/nextcloud_password)" ./system/nextcloud.nix.template > ./system/nextcloud.nix
+   else
+      fatal "no nextcloud file"
+   fi
+}
+
+get_host_id() {
+   cmd="head -c 8 /etc/machine-id" # command to get host-id
+   if [ "$CONF" = "server" ]
+   then
+      ip="$(tailscale ip -4 server)" # get servers ip (only working with setup tailscale)
+      ssh "$ip" "$cmd" # get host id over ssh (into server)
+   else
+      $cmd # run the command to get host-id locally
+   fi
+}
+
+host_id() {
+   log "host_id" 1
+   m4 -Dhost_id="$(get_host_id)" ./system/configuration.nix.template > system/configuration.nix
+}
+
+cp_hardware() {
+   log "cp_hardware" 1
+   check_env
+   if [ "$CONF" = "server" ]
+   then
+      ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
+      scp "$ip:/etc/nixos/hardware-configuration.nix" system/server/hardware-configuration.nix # using scp(1) to copy the file
+   else
+      cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
+   fi
+}
+
+refind() {
+   root refind-install
+}
+
 prepare() {
    log "prepare" 1
-   misc/install nextcloud # FIXME
-   misc/cp-hardware
-   misc/host-id
-   misc/get-key add
+   nextcloud # add dialog to put in the password FIXME # not needed to build nixconf
+   cp_hardware 
+   host_id 
+   misc/get-key add # FIXME
    add_to_git # add files needed by flake to git
 }
 
 apply() {
    log "apply" 1
-   if [ -s misc/.env ]
-   then
-      . misc/.env
-   else
-      fatal "no .env file"
-   fi
+   check_env
    prepare
    log "rebuilding nixos" 2
    root nixos-rebuild --flake ".#$CONF" -p "$CONF" --impure --install-bootloader switch
 }
-apply
-#add_to_git
+
+help() {
+   printf "task <action>"
+}
+
+main() {
+   case $1 in
+   "remove_from_git") remove_from_git
+      ;;
+   "add_to_git") add_to_git
+      ;;
+   "nextcloud") nextcloud
+      ;;
+   "get_host_id") get_host_id
+      ;;
+   "host_id") host_id
+      ;;
+   "cp_hardware") cp_hardware
+      ;;
+   "refind") refind
+      ;;
+   "prepare") prepare
+      ;;
+   "apply") apply
+      ;;
+   *) help
+   esac
+}
+main "$1"
