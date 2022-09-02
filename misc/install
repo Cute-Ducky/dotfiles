@@ -1,11 +1,11 @@
 #!/bin/sh
-touch misc/.env
+:> misc/.env # just a simpler touch
 . misc/m4
 
 create_nixops(){ 
    replace_system_file tailscale_ip $(tailscale ip -4 server) config-nixops
 
-   if [ -e misc/nixops ]
+   if [ -s misc/nixops ]
    then
       if dialog --stdout --title "Deployment already exists" \
          --backtitle "Deployment already exists" \
@@ -24,11 +24,13 @@ create_nixops(){
 
 check_env_file()
 {
-   if [ -e misc/.env ]
+   if [ -s misc/.env ]
    then
-      printf "missing env file. create a env file by running nix-shell"
+      printf "Missing env file. create a env file by running nix-shell --run misc/install"
+      exit 1;
    fi
 }
+
 menu()
 {
 task rm-prepare
@@ -71,7 +73,7 @@ esac
 fi
 }
 nextcloud() {
-   if [ -e nextcloud ] 
+   if [ -s nextcloud ] 
    then
 replace_system_file nextcloud_password $(cat nextcloud) nextcloud
    fi
@@ -79,7 +81,9 @@ replace_system_file nextcloud_password $(cat nextcloud) nextcloud
 help="setconf         set the config
 create-nixops    setup the nixops deployment"
 case $1 in
-   "setconf") sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env;exit 0
+   "setconf") 
+   check_env_file()
+   sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env
    ;;
    "create-nixops") create_nixops
    ;;

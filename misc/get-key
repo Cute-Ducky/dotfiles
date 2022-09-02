@@ -3,11 +3,10 @@
 . misc/m4
 
 user=$(whoami)
-ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
+
 if [ $CONF = "server" ]
 then
-   #ssh "$ip" "$cmd" # get host id over ssh (into server)
-   if [ -e server-key ]
+   if [ -s server-key ]
    then
       key=$(cat server-key)
    else
@@ -15,7 +14,7 @@ then
    fi
 echo $key > server-key
 else
-   if [ -e key ]
+   if [ -s key ]
    then
       key="$(cat key)" # run the command to get host-id locally
    else
