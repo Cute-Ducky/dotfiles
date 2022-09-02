@@ -8,8 +8,9 @@ tasks:
     cmds: 
       - task: prepare
       - echo "applying $CONF ..."
-      - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --impure --install-bootloader switch
-      - task: rm-prepare
+      - cmd: ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --impure --install-bootloader switch
+        ignore_error: true
+      - misc/remove
 
   env:
     cmds:
