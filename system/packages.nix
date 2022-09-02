@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+alsa-utils
 signal-desktop
 clamav
 efibootmgr
