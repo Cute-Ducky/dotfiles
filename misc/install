@@ -72,12 +72,6 @@ esac
    task apply
 fi
 }
-nextcloud() {
-   if [ -s nextcloud ] 
-   then
-replace_system_file nextcloud_password $(cat nextcloud) nextcloud
-   fi
-}
 help="setconf         set the config
 create-nixops    setup the nixops deployment"
 case $1 in
