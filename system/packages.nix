@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+python310Packages.youtube-dl
 xorg.xkill
 alsa-utils
 signal-desktop
