@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.pipewire = {
-    enable = false;
+    enable = true;
     alsa.enable = true;
     pulse.enable = true;
   };

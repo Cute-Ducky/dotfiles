@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+xorg.xkill
 alsa-utils
 signal-desktop
 clamav
