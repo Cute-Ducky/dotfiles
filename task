@@ -58,6 +58,42 @@ load_env() {
 }
 
 # Tasks:
+
+build_vm() { # task
+   load_env
+   run_task prepare
+   root nixos-rebuild --flake .#$CONF -p $CONF build-vm
+}
+
+delete() { # task
+   root nix-collect-garbage --delete-older-than 14d
+}
+
+auto_snapshot() { # task
+   root zfs set com.sun:auto-snapshot=true NIXROOT/home
+}
+
+update() { # task
+   nix flake update
+}
+
+cupdate() { # task
+   run_task update
+   git add flake.lock
+   git commit -m "update flake.lock"
+}
+
+pupdate() { # task
+   git pull
+   run_task apply
+   run_task apply
+}
+
+run_test() { # task
+   run_task apply # this run teh add_to_git task so we dont need to run it again
+   nix flake check 
+}
+
 remove_from_git() { # task
    for git_file in $git_files; do
       git rm --cached "$git_file" > /dev/null
@@ -72,7 +108,7 @@ add_to_git() { # task
       git add -f "$git_file"
       log "added $git_file to git" 2
    done
-   trap "run_task remove_from_git" EXIT # execute remove from git before exiting the script
+   trap "run_task remove_from_git" EXIT INT # execute remove from git before exiting the script
 }
 
 nextcloud() { # task
@@ -89,7 +125,7 @@ nextcloud() { # task
       printf '%s' "$nextcloud_password" > secrets/nextcloud_password
       m4 -Dnextcloud_password="$(cat secrets/nextcloud_password)" ./system/nextcloud.nix.template > ./system/nextcloud.nix
    else
-      :> system/nextcloud.nix # touch file if non existent and make empty if existent
+      printf "{ ... }: {}" > system/nextcloud.nix # touch file if non existent and make empty if existent
    fi
 }
 
@@ -154,6 +190,11 @@ prepare() { # task
    run_task host_id 
    run_task tailscale 
    run_task add_to_git # add files needed by flake to git
+}
+
+apply_user() { # task
+   nix build .#homeManagerConfigurations.$USER.activationPackage
+   ./result/activate
 }
 
 apply() { # task

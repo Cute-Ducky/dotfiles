@@ -4,7 +4,7 @@ version: '3'
 dotenv: ['misc/.env']
 
 tasks:
-  apply:
+  apply: #
     cmds: 
       - task: prepare
       - echo "applying $CONF ..."
@@ -18,7 +18,7 @@ tasks:
       - echo "$USER"
     silent: true
 
-  prepare:
+  prepare: #
     cmds:
       - ./misc/install nextcloud
       - task: cp-hardware
@@ -26,44 +26,44 @@ tasks:
       - task: tailscale
       - ./misc/add
  
-  rm-prepare:
+  rm-prepare: #
     cmds:
       - ./misc/remove
 
-  vm:
+  vm: #
     cmds: 
       - task: prepare
       - echo "building VM of $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF build-vm
       - task: rm-prepare
 
-  rm:
+  rm: #
     cmds:
       - ./misc/root nix-collect-garbage --delete-older-than 14d
 
-  hostid:
+  hostid: #
     cmds:
       - ./misc/host-id
 
-  cp-hardware:
+  cp-hardware: #
     cmds:
       - ./misc/cp-hardware
 
-  auto-snapshot:
+  auto-snapshot: #
     cmds:
-      - ./misc/root zfs set com.sun:auto-snapshot=true NIXROOT/home
+      - ./miscroot zfs set com.sun:auto-snapshot=true NIXROOT/home/
 
-  update:
+  update: #
     cmds:
       - nix flake update
   
-  cupdate:
+  cupdate: #
     cmds:
       - task: update
       - git add flake.lock
       - git commit -m "update flake.lock"
 
-  test:
+  test: #
     cmds:
       - task: apply
       - nix flake check
@@ -74,13 +74,13 @@ tasks:
       - git push
 
 
-  apply-user:
+  apply-user: #
     cmds:
       - nix build .#homeManagerConfigurations.$USER.activationPackage
       - ./result/activate
 
-  tailscale:
-    cmds:
+  tailscale: #
+   cmds:
       #- sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
       - ./misc/get-key add
 
@@ -89,12 +89,12 @@ tasks:
       - ./misc/root mkdir /jellyfin
       - ./misc/root chown -R jellyfin:jellyfin /jellyfin
 
-  pupdate:
+  pupdate: #
     cmds:
       - git pull
       - task: apply
       - task: apply-user
-  refind:
+  refind: #
     cmds:
       - echo "run this in a nix-shell"
       - ./misc/root refind-install
