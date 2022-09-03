@@ -1,5 +1,5 @@
 #!/bin/sh
-# FIXME indicator for using a script in misc
+# Taskfile but no misc/* dependencies
 
 git_files="
 system/key.nix
@@ -53,11 +53,23 @@ load_env() {
    then
       . misc/.env
    else
-      fatal "no .env file"
+      #fatal "no .env file"
+      run_task install # install creates the nev file
    fi
 }
 
 # Tasks:
+
+install() { # task
+   # misc/install our last dependency
+   choice="$(dialog --clear --backtitle 'Config selection' --title 'Config selection' --menu 'select the config you want to install' 15 40 4 'nixconf' 'The standard config' 'snow' 'Minimal nixconf' 'flash-os' 'patheon DE' 'server' 'server config' 'plan9' 'Full screen drawterm' 2>&1 >/dev/tty )"
+   printf 'CONF=%s\nUSER=glenda\n' "$choice" > misc/.env
+}
+
+env() { # task
+   load_env
+   printf 'CONF=%s\nUSER=%s\n' "$CONF" "$USER"
+}
 
 build_vm() { # task
    load_env
@@ -171,7 +183,6 @@ tailscale() { # task
       else
          key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
       fi
-   echo "$key" > secrets/server-tailscale-key
    else
       if [ -s secrets/tailscale-key ]
       then
@@ -179,8 +190,8 @@ tailscale() { # task
       else
          key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
       fi
-   echo "$key" >  secrets/tailscale-key
    fi
+   printf '%s\n' "$key" >  secrets/tailscale-key
    m4 -Dtskey_here="$key" ./system/key.nix.template > ./system/key.nix
 }
 
