@@ -75,9 +75,7 @@ fi
 help="setconf         set the config
 create-nixops    setup the nixops deployment"
 case $1 in
-   "setconf") 
-   check_env_file()
-   sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env
+   "setconf") sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env
    ;;
    "create-nixops") create_nixops
    ;;
