@@ -58,7 +58,7 @@ check_env() {
 }
 
 # Tasks:
-remove_from_git() {
+remove_from_git() { # task
    log "remove_from_git" 1
    for git_file in $git_files; do
       git rm --cached "$git_file" > /dev/null
@@ -66,7 +66,7 @@ remove_from_git() {
    done
 }
 
-add_to_git() {
+add_to_git() { # task
    log "add_to_git" 1
    for git_file in $git_files; do
       #:> "$git_file" # like rm $git_file && touch $git_file
@@ -77,7 +77,7 @@ add_to_git() {
    trap remove_from_git EXIT # execute remove from git before exiting the script
 }
 
-nextcloud() {
+nextcloud() { # task
    log "nextcloud" 1
    check_secrets_folder # create secrets folder if it's not existing
    if [ -s secrets/nextcloud_password ] 
@@ -88,7 +88,7 @@ nextcloud() {
    fi
 }
 
-get_host_id() {
+get_host_id() { # task
    cmd="head -c 8 /etc/machine-id" # command to get host-id
    if [ "$CONF" = "server" ]
    then
@@ -99,12 +99,12 @@ get_host_id() {
    fi
 }
 
-host_id() {
+host_id() { # task
    log "host_id" 1
    m4 -Dhost_id="$(get_host_id)" ./system/configuration.nix.template > system/configuration.nix
 }
 
-cp_hardware() {
+cp_hardware() { # task
    log "cp_hardware" 1
    check_env
    if [ "$CONF" = "server" ]
@@ -116,11 +116,11 @@ cp_hardware() {
    fi
 }
 
-refind() {
+refind() { # task
    root refind-install
 }
 
-prepare() {
+prepare() { # task
    log "prepare" 1
    nextcloud # add dialog to put in the password FIXME # not needed to build nixconf
    cp_hardware 
@@ -129,7 +129,7 @@ prepare() {
    add_to_git # add files needed by flake to git
 }
 
-apply() {
+apply() { # task
    log "apply" 1
    check_env
    prepare
@@ -137,31 +137,29 @@ apply() {
    root nixos-rebuild --flake ".#$CONF" -p "$CONF" --impure --install-bootloader switch
 }
 
-help() {
+help_msg() { # task
    printf "task <action>"
 }
 
-main() {
-   case $1 in
-   "remove_from_git") remove_from_git
+run_task() { 
+   # a function which reads this file and looks for functions with "# task" behind them/
+   # If "$1" is equal to the name of a function it executes this function
+   # all without any dependencies
+   # Usage: run_task "$1"
+   keyword="() { # task"
+   while IFS= read -r line || [ -n "$line" ]; do # read file line for line
+      case $line in # grep for *"keyword" without using grep
+         *"$keyword")
+            task_name="${line%%$keyword}" 
+            if [ "$1" = "$task_name" ]
+            then
+               $task_name
+            fi
       ;;
-   "add_to_git") add_to_git
+      *)
       ;;
-   "nextcloud") nextcloud
-      ;;
-   "get_host_id") get_host_id
-      ;;
-   "host_id") host_id
-      ;;
-   "cp_hardware") cp_hardware
-      ;;
-   "refind") refind
-      ;;
-   "prepare") prepare
-      ;;
-   "apply") apply
-      ;;
-   *) help
-   esac
+esac
+   done < "$0"
 }
-main "$1"
+
+run_task "$1"
