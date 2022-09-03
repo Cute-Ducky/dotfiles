@@ -48,7 +48,7 @@ check_secrets_folder() {
    fi
 }
 
-check_env() {
+load_env() {
    if [ -s misc/.env ]
    then
       . misc/.env
@@ -59,7 +59,6 @@ check_env() {
 
 # Tasks:
 remove_from_git() { # task
-   log "remove_from_git" 1
    for git_file in $git_files; do
       git rm --cached "$git_file" > /dev/null
       log "removed $git_file from git" 2
@@ -67,28 +66,35 @@ remove_from_git() { # task
 }
 
 add_to_git() { # task
-   log "add_to_git" 1
    for git_file in $git_files; do
       #:> "$git_file" # like rm $git_file && touch $git_file
       touch "$git_file"
       git add -f "$git_file"
       log "added $git_file to git" 2
    done
-   trap remove_from_git EXIT # execute remove from git before exiting the script
+   trap "run_task remove_from_git" EXIT # execute remove from git before exiting the script
 }
 
 nextcloud() { # task
-   log "nextcloud" 1
-   check_secrets_folder # create secrets folder if it's not existing
-   if [ -s secrets/nextcloud_password ] 
+   check_secrets_folder # create secrets folder if it's not existing 
+   load_env
+   if [ "$CONF" = "server" ]
    then
+      if [ -s secrets/nextcloud_password ]
+      then
+         nextcloud_password="$(cat secrets/nextcloud_password)" # run the command to get host-id locally
+      else
+         nextcloud_password=$(dialog --title "Nextcloud Password" --backtitle "Enter the password for your own nextcloud service" --inputbox "Enter the new password for your own self hosted nextcloud service" 8 60  2>&1 >/dev/tty)
+      fi
+      printf '%s' "$nextcloud_password" > secrets/nextcloud_password
       m4 -Dnextcloud_password="$(cat secrets/nextcloud_password)" ./system/nextcloud.nix.template > ./system/nextcloud.nix
    else
-      fatal "no nextcloud file"
+      :> system/nextcloud.nix # touch file if non existent and make empty if existent
    fi
 }
 
 get_host_id() { # task
+   load_env
    cmd="head -c 8 /etc/machine-id" # command to get host-id
    if [ "$CONF" = "server" ]
    then
@@ -100,13 +106,11 @@ get_host_id() { # task
 }
 
 host_id() { # task
-   log "host_id" 1
    m4 -Dhost_id="$(get_host_id)" ./system/configuration.nix.template > system/configuration.nix
 }
 
 cp_hardware() { # task
-   log "cp_hardware" 1
-   check_env
+   load_env
    if [ "$CONF" = "server" ]
    then
       ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
@@ -120,19 +124,41 @@ refind() { # task
    root refind-install
 }
 
+tailscale() { # task
+   load_env
+   check_secrets_folder
+   if [ "$CONF" = "server" ]
+   then
+      if [ -s secrets/server-tailscale-key ]
+      then
+         key=$(cat secrets/server-tailscale-key)
+      else
+         key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
+      fi
+   echo "$key" > secrets/server-tailscale-key
+   else
+      if [ -s secrets/tailscale-key ]
+      then
+         key="$(cat secrets/tailscale-key)" # run the command to get host-id locally
+      else
+         key=$(dialog --title "Tailscale key" --backtitle "Enter your tailscale key" --inputbox " Enter your tailscale key" 8 60 tskey- 2>&1 >/dev/tty)
+      fi
+   echo "$key" >  secrets/tailscale-key
+   fi
+   m4 -Dtskey_here="$key" ./system/key.nix.template > ./system/key.nix
+}
+
 prepare() { # task
-   log "prepare" 1
-   nextcloud # add dialog to put in the password FIXME # not needed to build nixconf
-   cp_hardware 
-   host_id 
-   misc/get-key add # FIXME
-   add_to_git # add files needed by flake to git
+   run_task nextcloud
+   run_task cp_hardware 
+   run_task host_id 
+   run_task tailscale 
+   run_task add_to_git # add files needed by flake to git
 }
 
 apply() { # task
-   log "apply" 1
-   check_env
-   prepare
+   load_env
+   run_task prepare
    log "rebuilding nixos" 2
    root nixos-rebuild --flake ".#$CONF" -p "$CONF" --impure --install-bootloader switch
 }
@@ -153,6 +179,7 @@ run_task() {
             task_name="${line%%$keyword}" 
             if [ "$1" = "$task_name" ]
             then
+               log "$task_name" 1
                $task_name
             fi
       ;;

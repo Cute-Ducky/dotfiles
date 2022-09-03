@@ -1,5 +1,5 @@
 #!/bin/sh
-:> misc/.env # just a simpler touch
+touch misc/.env # just a simpler touch
 . misc/m4
 
 create_nixops(){ 
