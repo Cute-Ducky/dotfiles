@@ -53,7 +53,7 @@ fn main() {
 }
 fn update() {
     Command::new("alacritty")
-    .args(["--command","sh","-c","cd ~/.dotfiles && task pupdate"])
+    .args(["--command","sh","-c","cd ~/.dotfiles && ./task pupdate"])
     .output()
     .expect("failed to execute process");
     //println!("{:?}",out.stdout);
