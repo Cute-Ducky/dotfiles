@@ -41,6 +41,7 @@ Contact me in a issue and we can discuss the details. Obviosly this service is f
 
 ## Thanks
 [paranoid nix](https://xeiaso.net/blog/paranoid-nixos-2021-07-18)
+[pure sh bible](https://github.com/dylanaraps/pure-sh-bible) 
 ## Author
 
 👤 **9glenda**
