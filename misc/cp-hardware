@@ -1,9 +1,0 @@
-#!/bin/sh
-. ~/.dotfiles/misc/.env # load the $CONF variable
-if [ "$CONF" = "server" ]
-then
-   ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
-   scp "$ip:/etc/nixos/hardware-configuration.nix" system/server/hardware-configuration.nix # using scp(1) to copy the file
-else
-   cp /etc/nixos/hardware-configuration.nix system/hardware-configuration.nix
-fi

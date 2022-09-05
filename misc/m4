@@ -1,8 +1,0 @@
-#!/bin/sh
-. ./misc/.env
-replace_system_file(){
-   # Usage
-   # replace_system_file <to_replace> <replace_with> <filename> #optional: <to_replace2> <replace_with2>
-   m4 -G -D$1="$2" -D$4=$5 system/$3.nix.template > system/$3.nix
-}
-export -f replace_system_file

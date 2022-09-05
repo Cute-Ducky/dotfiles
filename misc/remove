@@ -1,6 +1,0 @@
-#!/bin/sh
-git rm --cached system/key.nix
-git rm --cached system/nextcloud.nix
-git rm --cached system/configuration.nix
-git rm --cached system/config-nixops.nix
-git rm --cached system/hardware-configuration.nix

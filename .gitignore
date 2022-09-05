@@ -26,7 +26,8 @@ system/nextcloud.nix
 system/configuration.nix
 system/config-nixops.nix
 system/hardware-configuration.nix
-
+system/networking.nix
 
 .direnv
 .env
+
