@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+nushell
 shellcheck
 python310Packages.youtube-dl
 xorg.xkill
