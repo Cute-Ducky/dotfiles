@@ -27,30 +27,21 @@ check_secrets_folder() {
    fi
 }
 
-load_env() {
-   if [ -s misc/.env ]; then
-      . misc/.env
-   else
-      #fatal "no .env file"
-      run_task install # install creates the nev file
-   fi
-}
-
 # Tasks:
 
 install() { # task
    # misc/install our last dependency
    choice="$(dialog --clear --backtitle 'Config selection' --title 'Config selection' --menu 'select the config you want to install' 15 40 4 'nixconf' 'The standard config' 'snow' 'Minimal nixconf' 'flash-os' 'patheon DE' 'server' 'server config' 'plan9' 'Full screen drawterm' 2>&1 >/dev/tty )"
-   printf 'CONF=%s\nUSER=glenda\n' "$choice" > misc/.env
+   printf 'CONF=%s\nUSER=glenda\n' "$choice" > .env
 }
 
 env() { # task
-   load_env
+   load_env "./.env" "install"
    printf 'CONF=%s\nUSER=%s' "$CONF" "$USER"
 }
 
 build_vm() { # task
-   load_env
+   load_env "./.env" "install"
    run_task prepare
    root nixos-rebuild --flake .#$CONF -p $CONF build-vm
 }
@@ -103,7 +94,7 @@ add_to_git() { # task
 
 nextcloud() { # task
    check_secrets_folder # create secrets folder if it's not existing 
-   load_env
+   load_env "./.env" "install"
    if [ "$CONF" = "server" ]; then
       if [ -s secrets/nextcloud_password ]; then
          nextcloud_password="$(cat secrets/nextcloud_password)" # run the command to get host-id locally
@@ -118,7 +109,7 @@ nextcloud() { # task
 }
 
 get_host_id() { # task
-   load_env
+   load_env "./.env" "install"
    cmd="head -c 8 /etc/machine-id" # command to get host-id
    if [ "$CONF" = "server" ]; then
       ip="$(tailscale ip -4 server)" # get servers ip (only working with setup tailscale)
@@ -133,7 +124,7 @@ host_id() { # task
 }
 
 cp_hardware() { # task
-   load_env
+   load_env "./.env" "install"
    if [ "$CONF" = "server" ]; then
       ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
       scp "$ip:/etc/nixos/hardware-configuration.nix" system/server/hardware-configuration.nix # using scp(1) to copy the file
@@ -147,7 +138,7 @@ refind() { # task
 }
 
 tailscale() { # task
-   load_env
+   load_env "./.env" "install"
    check_secrets_folder
    if [ "$CONF" = "server" ]; then
       if [ -s secrets/server-tailscale-key ]; then
@@ -180,7 +171,7 @@ apply_user() { # task
 }
 
 apply() { # task
-   load_env
+   load_env "./.env" "install"
    run_task prepare
    log "rebuilding nixos" 2
    root nixos-rebuild --flake ".#$CONF" -p "$CONF" --impure --install-bootloader switch

@@ -23,13 +23,26 @@ fatal() {
    exit 1
 }
 
+
+load_env() {
+   if [ -s "$1" ]; then
+      . "$1"
+   else
+      #fatal "no .env file"
+      log "error: no .env file"
+      run_task "$2" # run task to create task file
+   fi
+}
+
+
 load_task_file() {
    if [ -s Taskfile.sh ]; then
-      . Taskfile.sh
+      . ./Taskfile.sh
    else
       fatal "no Taskfile.sh found"
    fi
 }
+
 
 run_task() { 
    # a function which reads this file and looks for functions with "# task" behind them/
@@ -54,7 +67,7 @@ run_task() {
       *)
       ;;
 esac
-   done < "Taskfile.sh"
+   done < "./Taskfile.sh"
 }
 
 run_task "$1"
