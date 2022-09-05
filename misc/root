@@ -1,8 +1,0 @@
-#!/bin/sh
-if ! command -v sudo &> /dev/null
-then
-doas $@
-else
-sudo $@
-fi
-
