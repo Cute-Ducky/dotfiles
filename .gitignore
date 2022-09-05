@@ -29,3 +29,4 @@ system/hardware-configuration.nix
 
 
 .direnv
+.env
