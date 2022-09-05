@@ -30,7 +30,7 @@ check_secrets_folder() {
 
 # Tasks:
 
-wifi_password() { # task
+wifi() { # task
    check_secrets_folder # create secrets folder if it's not existing 
    load_env "./.env" "install"
 
@@ -45,9 +45,10 @@ wifi_password() { # task
       else
          wifi_password=$(dialog --title "Wifi Password" --backtitle "Enter the password for your wifi" --inputbox "Enter the password for your wifi" 8 60  2>&1 >/dev/tty)
       fi
-      printf '%s' "$wifi_password" > secrets/wifi_password
 
       printf '%s' "$wifi_password" > secrets/wifi_password
+      printf '%s' "$wifi_name" > secrets/wifi_name
+
       m4 -Dwifi_password="$wifi_password" -Dwifi_name="$wifi_name" ./system/networking.nix.template > ./system/networking.nix
 }
 
@@ -180,6 +181,7 @@ tailscale() { # task
 }
 
 prepare() { # task
+   run_task wifi
    run_task nextcloud
    run_task cp_hardware 
    run_task host_id 

@@ -2,20 +2,14 @@
  
 {
 networking.wireless = {
-enable = true;  # Enables wireless support via wpa_supplicant.
-userControlled.enable = true;
-# environmentFile = "/run/secrets/wireless.env";
-networks = {
-"wifi_name".psk = "wifi_password";
-# work.auth = '''
-# eap=PEAP
-# identity="my-user@example.com"
-# password="@PASS_WORK@"
-# ''';
-};
+   enable = true;  # Enables wireless support via wpa_supplicant.
+   userControlled.enable = true;
+   networks = {
+      "wifi_name".psk = "wifi_password";
+   };
 };
 
-# networking.networkmanager.enable = true;  
+# networking.networkmanager.enable = true;  # wireless support with network manager
 
 networking.extraHosts = ''
 192.168.178.169 pi.home.local
