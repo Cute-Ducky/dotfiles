@@ -7,6 +7,7 @@ git_files="
 ./system/nextcloud.nix
 ./system/configuration.nix
 ./system/config-nixops.nix
+./system/networking.nix
 ./system/hardware-configuration.nix"
 
 root() {
@@ -28,6 +29,27 @@ check_secrets_folder() {
 }
 
 # Tasks:
+
+wifi_password() { # task
+   check_secrets_folder # create secrets folder if it's not existing 
+   load_env "./.env" "install"
+
+      if [ -s secrets/wifi_name ]; then
+         wifi_name="$(cat secrets/wifi_name)" # run the command to get host-id locally
+      else
+         wifi_name=$(dialog --title "Wifi name" --backtitle "Enter the name of your wifi" --inputbox "Enter the name of your wifi" 8 60  2>&1 >/dev/tty)
+      fi
+
+      if [ -s secrets/wifi_password ]; then
+         wifi_password="$(cat secrets/wifi_password)" # run the command to get host-id locally
+      else
+         wifi_password=$(dialog --title "Wifi Password" --backtitle "Enter the password for your wifi" --inputbox "Enter the password for your wifi" 8 60  2>&1 >/dev/tty)
+      fi
+      printf '%s' "$wifi_password" > secrets/wifi_password
+
+      printf '%s' "$wifi_password" > secrets/wifi_password
+      m4 -Dwifi_password="$wifi_password" -Dwifi_name="$wifi_name" ./system/networking.nix.template > ./system/networking.nix
+}
 
 install() { # task
    # misc/install our last dependency

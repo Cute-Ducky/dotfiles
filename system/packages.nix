@@ -3,6 +3,7 @@
 {
 
 environment.systemPackages = with pkgs; [
+wpa_supplicant_gui
 protonvpn-gui
 protonvpn-cli
 nushell
