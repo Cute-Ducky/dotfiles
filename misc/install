@@ -1,29 +1,36 @@
 #!/bin/sh
-
+touch misc/.env # just a simpler touch
+. misc/m4
 
 create_nixops(){ 
-   sed -i "s/<tailscale ip>/$(tailscale ip -4 server)/g" config-nixops.nix
-   if [ -e misc/nixops ]
+   replace_system_file tailscale_ip $(tailscale ip -4 server) config-nixops
+
+   if [ -s misc/nixops ]
    then
       if dialog --stdout --title "Deployment already exists" \
          --backtitle "Deployment already exists" \
          --yesno "Do you want to delete the old deployment and recreate it?" 7 60
       then 
          nixops delete --force -d $(cat misc/nixops)
+         printf "$(nixops create system/config-nixops.nix -d server)" > misc/nixops
       else
-         printf "created new deployment"
+         printf "no deployment created"
       fi
    else
-      printf "$(nixops create config-nixops.nix -d server)" > misc/nixops
+      printf "created new deployment"
+      printf "$(nixops create system/config-nixops.nix -d server)" > misc/nixops
    fi
 }
+
 check_env_file()
 {
-   if [ -e misc/.env ]
+   if [ -s misc/.env ]
    then
-      printf "missing env file. create a env file by running nix-shell"
+      printf "Missing env file. create a env file by running nix-shell --run misc/install"
+      exit 1;
    fi
 }
+
 menu()
 {
 task rm-prepare
@@ -66,11 +73,15 @@ esac
 fi
 }
 help="setconf         set the config
-setup-nixops    setup the nixops deployment"
+create-nixops    setup the nixops deployment"
 case $1 in
-   "setconf") sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env;exit 0
+   "setconf") sed -i "s/$(task env | awk 'NR==1')/$2/g" misc/.env
    ;;
-   "setup-nixops") create_nixops
+   "create-nixops") create_nixops
+   ;;
+   "deploy-nixops") nixops deploy -d $(cat misc/nixops)
+   ;;
+   "nextcloud") nextcloud
    ;;
    "help") printf "$help"
    ;;

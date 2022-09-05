@@ -7,6 +7,7 @@ core.*
 misc/.env
 key
 server-key
+nextcloud
 target
 !rust/welcome/target/release/welcome
 misc/nixops
@@ -16,4 +17,16 @@ arion/vw-data
 install-demo.cast2
 install-demo.cast3
 
+secrets/*
 
+
+# m4
+system/key.nix
+system/nextcloud.nix
+system/configuration.nix
+system/config-nixops.nix
+system/hardware-configuration.nix
+
+
+.direnv
+.env

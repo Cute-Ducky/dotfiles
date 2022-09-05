@@ -6,9 +6,11 @@ let
    git
    dialog
    openssh
-   nixops
    tailscale
-   nixops
+   nixopsUnstable
+   gnum4
+   refind
+   efibootmgr
    ];
 
 in
@@ -16,7 +18,8 @@ in
     name = "env";
     buildInputs = pkgs;
     shellHook = ''
-   ./misc/install
+   #./misc/install
+   #./misc/m4
   '';
 
   }

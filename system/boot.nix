@@ -1,10 +1,10 @@
-{ ... }:
+{ pkgs,... }:
  
 {
 
 
 boot = {
-   #kernelPackages = pkgs.linuxPackages_latest_hardened;
+   kernelPackages = pkgs.linuxPackages_5_18;
    loader = {
         efi = {
            #canTouchEfiVariables = true;

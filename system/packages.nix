@@ -3,6 +3,21 @@
 {
 
 environment.systemPackages = with pkgs; [
+nushell
+shellcheck
+python310Packages.youtube-dl
+xorg.xkill
+alsa-utils
+signal-desktop
+clamav
+efibootmgr
+refind
+glibc
+pango
+graphene 
+gdk-pixbuf-xlib
+oed
+gnum4
 oed
 gtk4
 zip

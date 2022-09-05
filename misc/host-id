@@ -1,10 +1,14 @@
 #!/bin/sh
 . ~/.dotfiles/misc/.env # load the $CONF variable
+. misc/m4
+get_host_id() {
 cmd="head -c 8 /etc/machine-id" # command to get host-id
-ip="$(tailscale ip -4 server)" # get servers ip (only working iwth setup tailscale)
 if [ $CONF = "server" ]
 then
+   ip="$(tailscale ip -4 server)" # get servers ip (only working with setup tailscale)
    ssh "$ip" "$cmd" # get host id over ssh (into server)
 else
    $cmd # run the command to get host-id locally
 fi
+}
+replace_system_file host_id $(get_host_id) configuration

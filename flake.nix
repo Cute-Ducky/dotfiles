@@ -27,6 +27,14 @@
   nixconf = lib.nixosSystem {
      inherit system;
      modules = [
+# paranoid nix
+./system/noexec.nix
+./system/no-defaults.nix
+./system/audit.nix
+
+# tmp user
+./system/tmp-user.nix
+
 #./system/nextmount.nix
 #./system/system.nix
 #./lib/modules.nix
@@ -157,20 +165,32 @@ server = lib.nixosSystem {
   ./system/container.nix
         ];
     };
+
+   #defaultPackage = pkgs.hello;
+   nixopsConfigurations.default = {
+      inherit nixpkgs;
+      network.storage.legacy = {
+         databasefile = "~/.nixops/deployments.nixops";
+      };
+      network.description = "server"; 
+          webserver = import ./server.nix;
+      };
+
 devShells.x86_64-linux.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             go-task
             git
             dialog
             openssh
-            nixops
+            nixopsUnstable
             tailscale
+            gnum4
+            refind
+            efibootmgr
           ];
           shellHook = ''
           echo "Welcome to my dotfiles" 
           '';
-        };
-
-  };
-
+      };
+   };
 }

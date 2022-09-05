@@ -349,7 +349,7 @@ static const char *layoutmenu_cmd = "layoutmenu.sh";
 static const char *const autostart[] = {
 //"feh","--bg-fill","$HOME/.dotfiles/wallpapers/lofi-4K.jpg", NULL,
 	"nitrogen","--restore",NULL,
-	"xautolock","-time","1","-locker","xlock -startcmd 'xset dpms force suspend'", NULL,
+	"xautolock","-locker","xlock -startcmd 'xset dpms force suspend'", NULL,
 	"picom", NULL,
 	"sh","-c","$HOME/.dotfiles/system/src/dwm/bar.sh",NULL,
         "sh","-c","$HOME/.dotfiles/rust/welcome/welcome",NULL,
@@ -823,6 +823,7 @@ static const char *dmenucmd[] = {
 	NULL
 };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *browsercmd[]  = { "librewolf", NULL };
 static const char *lockcmd[]  = { "xlock","-startcmd","xset dpms force suspend", NULL };
 
 
@@ -867,6 +868,8 @@ static Key keys[] = {
 	#endif // KEYMODES_PATCH
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
+        { MODKEY,                       XK_e,          spawn,                  {.v = browsercmd} },
+        { MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = lockcmd} },
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
 	{ MODKEY|ControlMask,           XK_Return,     riospawn,               {.v = termcmd } },

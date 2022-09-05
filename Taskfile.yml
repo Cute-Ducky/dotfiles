@@ -4,12 +4,13 @@ version: '3'
 dotenv: ['misc/.env']
 
 tasks:
-  apply:
+  apply: #
     cmds: 
       - task: prepare
       - echo "applying $CONF ..."
-      - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --install-bootloader switch
-      - task: rm-prepare
+      - cmd: ./misc/root nixos-rebuild --flake .#$CONF -p $CONF --impure --install-bootloader switch
+        ignore_error: true
+      - misc/remove
 
   env:
     cmds:
@@ -17,56 +18,52 @@ tasks:
       - echo "$USER"
     silent: true
 
-  prepare:
+  prepare: #
     cmds:
+      - ./misc/install nextcloud
       - task: cp-hardware
       - task: hostid
       - task: tailscale
+      - ./misc/add
  
-  rm-prepare:
+  rm-prepare: #
     cmds:
-      - task: rm-hostid
-      - task: rm-tailscale
+      - ./misc/remove
 
-  vm:
+  vm: #
     cmds: 
       - task: prepare
       - echo "building VM of $CONF ..."
       - ./misc/root nixos-rebuild --flake .#$CONF -p $CONF build-vm
       - task: rm-prepare
 
-  rm:
+  rm: #
     cmds:
       - ./misc/root nix-collect-garbage --delete-older-than 14d
 
-  hostid:
+  hostid: #
     cmds:
-      - sed -i "s/12355671/$(./misc/host-id)/g" system/configuration.nix
+      - ./misc/host-id
 
-  rm-hostid:
+  cp-hardware: #
     cmds:
-      - sed -i "s/$(./misc/host-id)/12355671/g" system/configuration.nix
-
-  cp-hardware:
-    cmds:
-      #- cp -f /etc/nixos/hardware-configuration.nix system
       - ./misc/cp-hardware
 
-  auto-snapshot:
+  auto-snapshot: #
     cmds:
-      - ./misc/root zfs set com.sun:auto-snapshot=true NIXROOT/home
+      - ./miscroot zfs set com.sun:auto-snapshot=true NIXROOT/home/
 
-  update:
+  update: #
     cmds:
       - nix flake update
   
-  cupdate:
+  cupdate: #
     cmds:
       - task: update
       - git add flake.lock
       - git commit -m "update flake.lock"
 
-  test:
+  test: #
     cmds:
       - task: apply
       - nix flake check
@@ -77,28 +74,27 @@ tasks:
       - git push
 
 
-  apply-user:
+  apply-user: #
     cmds:
       - nix build .#homeManagerConfigurations.$USER.activationPackage
       - ./result/activate
 
-  tailscale:
-    cmds:
+  tailscale: #
+   cmds:
       #- sed -i "s/#.\/system\/key.nix/.\/system\/key.nix/g" flake.nix
       - ./misc/get-key add
-
-
-  rm-tailscale:
-    cmds:
-      - ./misc/get-key rm
 
   jellyfin:
     cmds:
       - ./misc/root mkdir /jellyfin
       - ./misc/root chown -R jellyfin:jellyfin /jellyfin
 
-  pupdate:
+  pupdate: #
     cmds:
       - git pull
       - task: apply
       - task: apply-user
+  refind: #
+    cmds:
+      - echo "run this in a nix-shell"
+      - ./misc/root refind-install

@@ -1,6 +1,10 @@
+<html>
 <h1 align="center">Welcome to my nixos ❄️ dotfiles </h1>
 <p>
 </p>
+</html>
+
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
 > My nixos dotfiles/config deployed as a flake
 > <img title="screenshot" alt="rice" src="/images/screenshot1.png">
@@ -38,6 +42,11 @@ task apply
 ## Need a custome config?
 
 Contact me in a issue and we can discuss the details. Obviosly this service is free.
+
+## Thanks
+
+[paranoid nix](https://xeiaso.net/blog/paranoid-nixos-2021-07-18)
+[pure sh bible](https://github.com/dylanaraps/pure-sh-bible) 
 
 ## Author
 
