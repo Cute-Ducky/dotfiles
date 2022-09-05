@@ -3,11 +3,11 @@
 log_level=1
 
 git_files="
-system/key.nix
-system/nextcloud.nix
-system/configuration.nix
-system/config-nixops.nix
-system/hardware-configuration.nix"
+./system/key.nix
+./system/nextcloud.nix
+./system/configuration.nix
+./system/config-nixops.nix
+./system/hardware-configuration.nix"
 
 root() {
    if ! command -v sudo > /dev/null
@@ -60,14 +60,14 @@ update() { # task
 
 cupdate() { # task
    run_task update
+   run_task remove_from_git
    git add flake.lock
    git commit -m "update flake.lock"
 }
 
 pupdate() { # task
    git pull
-   run_task apply
-   run_task apply
+   run_task apply 
 }
 
 run_test() { # task
@@ -89,7 +89,7 @@ add_to_git() { # task
       git add -f "$git_file"
       log "added $git_file to git" 2
    done
-   trap "run_task remove_from_git" EXIT INT # execute remove from git before exiting the script
+   trap "run_task remove_from_git" EXIT # execute remove from git before exiting the script
 }
 
 nextcloud() { # task
