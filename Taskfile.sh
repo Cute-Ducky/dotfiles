@@ -8,7 +8,8 @@ git_files="
 ./system/configuration.nix
 ./system/config-nixops.nix
 ./system/networking.nix
-./system/hardware-configuration.nix"
+./system/hardware-configuration.nix
+./system/src/dwm-flexipatch/"
 
 root() {
    if ! command -v sudo > /dev/null
@@ -29,6 +30,12 @@ check_secrets_folder() {
 }
 
 # Tasks:
+
+dwm() { # task
+   rm -rf system/src/dwm-flexipatch
+   git clone https://github.com/9glenda/dwm-flexipatch system/src/dwm-flexipatch
+   rm -rf system/src/dwm-flexipatch/.git
+}
 
 wifi() { # task
    check_secrets_folder # create secrets folder if it's not existing 
@@ -100,8 +107,8 @@ run_test() { # task
 
 remove_from_git() { # task
    for git_file in $git_files; do
-      git rm --cached "$git_file" > /dev/null
-      log "removed $git_file from git" 2
+      git rm -f -r --cached "$git_file" > /dev/null
+      log "removed $git_file from git" 2 
    done
 }
 
@@ -181,6 +188,7 @@ tailscale() { # task
 }
 
 prepare() { # task
+   run_task dwm
    run_task wifi
    run_task nextcloud
    run_task cp_hardware 
