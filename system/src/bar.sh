@@ -5,7 +5,7 @@ interval=0
 
 # load colors
 black=#1e222a
-green=#7eca9c
+green=#6e9b8b
 white=#abb2bf
 grey=#282c34
 blue=#7aa2f7

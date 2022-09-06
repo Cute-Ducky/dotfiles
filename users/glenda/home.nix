@@ -2,7 +2,7 @@
 
 {
 imports = [
-./emacs.nix
+#./emacs.nix
 ./picom.nix
 ./vim.nix
 ];

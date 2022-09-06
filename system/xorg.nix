@@ -3,8 +3,8 @@
 {
  nixpkgs.overlays = [
      (final: prev: {
-            dwm = prev.dwm.overrideAttrs (old: { 
-               src = ./src/dwm;
+            dwm = prev.dwm.overrideAttrs (old: {
+               src = ./src/dwm-flexipatch;
                });
             tabbed-siduck = prev.tabbed.overrideAttrs (old: {
                src = final.fetchgit {
