@@ -96,6 +96,9 @@ cupdate() { # task
 }
 
 pupdate() { # task
+   if [ -s migrate.sh ]; then
+      ./migrate.sh
+   fi
    git pull
    run_task apply 
 }
