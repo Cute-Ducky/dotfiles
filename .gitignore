@@ -27,7 +27,7 @@ system/configuration.nix
 system/config-nixops.nix
 system/hardware-configuration.nix
 system/networking.nix
-systme/src/dwm-flexipatch
+system/src/dwm-flexipatch
 
 .direnv
 .env
